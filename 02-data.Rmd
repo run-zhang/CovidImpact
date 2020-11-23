@@ -59,7 +59,8 @@ Second, a comparison of year-over-year seated covers to demonstrate where we are
  
 ## Airlines Data 
  
-Data Source: https://www.bts.gov/data-spotlight/airlines-july-operations
+### Data Source: 
+https://www.bts.gov/data-spotlight/airlines-july-operations
  
 This airlines data is from the Bureau of Transportation Statistics. The BTS is part of the Department of Transportation and is the main source of data on many different transportation factors such as commercial aviation, transportation economics, and freight activity. The data provided on this website is collected from the Bureau’s National Transportation Library, which contains many different publications and information about the transportation community. We chose this dataset because it provides valuable information on how the airline community was affected by the oncoming of the now widespread pandemic, Covid-19. 
 Types of Variables: 
