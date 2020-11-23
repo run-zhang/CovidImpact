@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Data sources | YOUR TITLE HERE</title>
   <meta name="description" content="Chapter 2 Data sources | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Data sources | YOUR TITLE HERE" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="YOUR NAMES HERE" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2020-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-transformation.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,7 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 
@@ -72,7 +73,17 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#requirement"><i class="fa fa-check"></i><b>2.1</b> requirement</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#country-policy-orders"><i class="fa fa-check"></i><b>2.2</b> Country Policy Orders</a></li>
+<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#hospitalization-data"><i class="fa fa-check"></i><b>2.3</b> Hospitalization Data</a></li>
+<li class="chapter" data-level="2.4" data-path="data-sources.html"><a href="data-sources.html#restaurant-data"><i class="fa fa-check"></i><b>2.4</b> Restaurant data :</a></li>
+<li class="chapter" data-level="2.5" data-path="data-sources.html"><a href="data-sources.html#airlines-data"><i class="fa fa-check"></i><b>2.5</b> Airlines Data</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="data-sources.html"><a href="data-sources.html#data-source"><i class="fa fa-check"></i><b>2.5.1</b> Data Source:</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
 <li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
@@ -99,7 +110,82 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
+<div id="requirement" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> requirement</h2>
+<p>Write a draft of the <a href="https://edav.info/project#report-format">Data Sources chapter</a>.
+Describe the data sources: who is responsible for collecting the data? How is it collected? If there were a choice of options, explain how you chose.
+Provide some basic information about the dataset: types of variables, number of records, etc.
+Describe any issues / problems with the data, either known or that you discover.
+(suggested: approximately 1 page)</p>
+</div>
+<div id="country-policy-orders" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Country Policy Orders</h2>
+<p><em>Data Source</em>:
+<a href="https://healthdata.gov/dataset/covid-19-state-and-county-policy-orders" class="uri">https://healthdata.gov/dataset/covid-19-state-and-county-policy-orders</a>
+This is a federal government website managed by the U.S. Department of Health &amp; Human Services. This data is a manually curated dataset that provides a standardized view into state and county policy orders (executive orders, ordinances, etc.) from the following sources:
+BU COVID-19 State Policy Database - Raifman J, Nocka K, Jones D, Bor J, Lipson S, Jay J, and Chan P. (2020). “COVID-19 US state policy database.”
+wikidata - Stay At Home Policies Queried from WikiData
+Manual curation by a dedicated group of Virtual Student Federal Service Interns - Summer 2020: T Adler, J Bastian, L Beckett, M Cohen, K Honey, C Kennedy, E Nudell
+We chose this dataset over the BU google form linked in the sources because this dataset is much more consolidated. In addition, the website seems more reputable because it is from the government.</p>
+<p><em>Basic Information about Dataset</em>: The dataset has categories: State, county, zip code, policy level, date, start stop, comments, source, total phases. There are 3507 instances. The details are as below taken from their dictionary (<a href="https://healthdata.gov/covid-19-state-and-county-policy-orders-data-dictionary" class="uri">https://healthdata.gov/covid-19-state-and-county-policy-orders-data-dictionary</a>):
+state_id (string): The two digit state code for the policy change
+county (optional string): The county name where the policy change was implemented. Optional due to counties occasionally implementing their own policies.</p>
+<p>fips_code (string): A list of fips codes where the policy change is occurring. This is the authoritative column for where a county policy change occurs.
+policy_level (string): Whether the policy is a state of county-level policy. Either “state” or “county.”</p>
+<p>date (date, formatted YYYY-MM-dd): The date of the policy. Please note that there is also a start and stop column, to indicate whether this date is for the beginning or end of the policy.</p>
+<p>policy_type (string): The “type” of policy this in. Generically fitted in to many categories including Gym policies, Food and Drink policies, Stay at Home policies, and more.</p>
+<p>start_stop (string): Either “start” or “stop” Indicating whether this entry is for the beginning or end of a policy, respectively.</p>
+<p>comments (string): Details about the policies. In some cases, simply a link to a website with more information.</p>
+<p>source (string): Where this policy comes from. Either BU COVID-19 Policy Database, Wikidata, manual (no source), or sip_submission_form (with source website URL).</p>
+<p>total_phases (integer): As some states shifted to reopening policies, this column captures the number of phases of reopening that were expected.</p>
+<p><em>Issues about data</em>: This dataset pulls from many different sources. Hence, there are some missing values because some instances only have information about states in general rather than counties.</p>
+</div>
+<div id="hospitalization-data" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Hospitalization Data</h2>
+<p><em>Data Source</em>:
+<a href="https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state" class="uri">https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state</a></p>
+<p><a href="https://healthdata.gov/dataset/covid-19-reported-patient-impact-and-hospital-capacity-state" class="uri">https://healthdata.gov/dataset/covid-19-reported-patient-impact-and-hospital-capacity-state</a></p>
+<p>This is a federal government website managed by the U.S. Department of Health &amp; Human Services. The following dataset provides state-aggregated data for hospital utilization. These are derived from reports with facility-level granularity across two main sources: (1) HHS TeleTracking, and (2) reporting provided directly to HHS Protect by state/territorial health departments on behalf of their healthcare facilities. The file will be updated daily and provides the latest values reported by each facility within the last four days. This allows for a more comprehensive picture of the hospital utilization within a state by ensuring a hospital is represented, even if they miss a single day of reporting.
+We chose this dataset because it is from a very official source and is consolidated rather than its sources.</p>
+<p><em>Basic Information on this dataset</em>: They are all numerical values. Some percentages and some numbers. There are 60 different columns and 54 instances. Details of all the columns are listed in this dictionary
+(<a href="https://healthdata.gov/covid-19-reported-patient-impact-and-hospital-capacity-state-data-dictionary" class="uri">https://healthdata.gov/covid-19-reported-patient-impact-and-hospital-capacity-state-data-dictionary</a>) Some examples are listed below:</p>
+<p>state: The two digit state code</p>
+<p>critical_staffing_shortage_today_yes: Number of hospitals reporting a critical staffing shortage today in this state.</p>
+<p>hospital_onset_covid: Total current inpatients with onset of suspected or laboratory-confirmed COVID-19 fourteen or more days after admission for a condition other than COVID-19 in this state.</p>
+<p>previous_day_admission_adult_covid_confirmed: Number of patients who were admitted to an adult inpatient bed on the previous calendar day who had confirmed COVID-19 at the time of admission in this state</p>
+<p>staffed_adult_icu_bed_occupancy: Reported total number of staffed inpatient adult ICU beds that are occupied in this state</p>
+<p>total_adult_patients_hospitalized_confirmed_and_suspected_covid_coverage: Number of hospitals reporting</p>
+<p>total_staffed_adult_icu_beds: Reported total number of staffed inpatient adult ICU beds in this state</p>
+<p>inpatient_beds_utilization: Percentage of inpatient beds that are being utilized in this state. This number only accounts for hospitals in the state that report both “inpatient_beds_used” and “inpatient_beds” fields.</p>
+<p>inpatient_bed_covid_utilization_coverage: Number of hospitals reporting both “inpatient_beds_used_covid” and “inpatient_beds”.</p>
+<p>adult_icu_bed_covid_utilization: Percentage of total staffed adult ICU beds currently utilized by patients who have suspected or confirmed COVID-19 in this state. This number only accounts for hospitals in the state that report both “staffed_icu_adult_patients_confirmed_and_suspected_covid” and “total_staffed_adult_icu_beds” fields.</p>
+<p>reporting_cutoff_start: Look back date start - The latest reports from each hospital is summed for this report starting with this date.</p>
+<p><em>Issues with data</em>: According to the data source no statistical analysis is applied to account for non-response and/or to account for missing data. Otherwise, we do not see major issues.</p>
+</div>
+<div id="restaurant-data" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Restaurant data :</h2>
+<p><em>Data source</em>
+<a href="https://www.opentable.com/state-of-industry" class="uri">https://www.opentable.com/state-of-industry</a>
+### About the data
+The data indexes two things.
+First, the overall impact of Covid 19 on the industry by showing year-over-year seated diners at a sample of restaurants on the OpenTable network across all channels: online reservations, phone reservations, and walk-ins. For year-over-year comparisons by day, we compare to the same day of the week from the same week in the previous year. For example, we’d compare Tuesday of week 11 in 2020 to Tuesday of week 11 in 2019. Only states or metros with 50+ restaurants on the OpenTable network for 2019 or 2020 are included in the sample. To better reflect the state of the industry overall, this dataset is based on a sample of approximately 20,000 restaurants that provide OpenTable with information on all of their inventory. This sample of restaurants typically accounts for a majority of our seated online reservations.
+Second, a comparison of year-over-year seated covers to demonstrate where we are seeing recovery start to take shape. This table shows year-over-year seated covers across all channels at only the restaurants that have chosen to reopen in a given market. As an example, if there were 50 seated covers in restaurants that have recently reopened in a given locale on May 11, 2019 and on the same day in 2020 there was 1, then 2% will be displayed. For this chart, only markets with 500+ restaurants on OpenTable of which 10%+ are accepting online reservations are included.</p>
+</div>
+<div id="airlines-data" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Airlines Data</h2>
+<div id="data-source" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Data Source:</h3>
+<p><a href="https://www.bts.gov/data-spotlight/airlines-july-operations" class="uri">https://www.bts.gov/data-spotlight/airlines-july-operations</a></p>
+<p>This airlines data is from the Bureau of Transportation Statistics. The BTS is part of the Department of Transportation and is the main source of data on many different transportation factors such as commercial aviation, transportation economics, and freight activity. The data provided on this website is collected from the Bureau’s National Transportation Library, which contains many different publications and information about the transportation community. We chose this dataset because it provides valuable information on how the airline community was affected by the oncoming of the now widespread pandemic, Covid-19.
+Types of Variables:</p>
+<p>year(int) - year of flight
+month(string) - month of flight<br />
+Total Domestic Flights Operated(int) - total number of flights operated that month/year
+airline(string) - airline brand</p>
+<p>Issues about dataset: Since there is limited information in this dataset, we will have to create additional variables using the information we have to analyze the data further and make stronger conclusions.</p>
 
+</div>
+</div>
 </div>
             </section>
 

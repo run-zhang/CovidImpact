@@ -1,0 +1,14 @@
+introduction
+data-sources
+requirement
+country-policy-orders
+restaurant-data
+data-source
+airlines-data
+data-source-1
+data-transformation
+missing-values
+results
+interactive-component
+conclusion
+hospitalization-data
