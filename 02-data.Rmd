@@ -84,10 +84,9 @@ First, the overall impact of Covid 19 on the industry by showing year-over-year 
 Second, a comparison of year-over-year seated covers to demonstrate where we are seeing recovery start to take shape. This table shows year-over-year seated covers across all channels at only the restaurants that have chosen to reopen in a given market. As an example, if there were 50 seated covers in restaurants that have recently reopened in a given locale on May 11, 2019 and on the same day in 2020 there was 1, then 2% will be displayed. For this chart, only markets with 500+ restaurants on OpenTable of which 10%+ are accepting online reservations are included.
  
 ## Airlines Data 
- 
-### Data Source: 
+*Data source* 
 https://www.bts.gov/data-spotlight/airlines-july-operations
- 
+### About the data
 This airlines data is from the Bureau of Transportation Statistics. The BTS is part of the Department of Transportation and is the main source of data on many different transportation factors such as commercial aviation, transportation economics, and freight activity. The data provided on this website is collected from the Bureau’s National Transportation Library, which contains many different publications and information about the transportation community. We chose this dataset because it provides valuable information on how the airline community was affected by the oncoming of the now widespread pandemic, Covid-19. 
 Types of Variables: 
  
