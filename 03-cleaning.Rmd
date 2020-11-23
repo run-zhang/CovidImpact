@@ -1,1 +1,19 @@
 # Data transformation
+
+
+
+Describe the process of getting the data into a form in which you could work with it in R. If your code does not lend itself to being including in the .Rmd file, provide a link to the folder or file(s) that contain(s) that code.
+Write a draft of the [Data Transformation chapter](https://edav.info/project#report-format)
+
+Country Policy Orders: 
+This dataset comes in a csv format, which can be read in using R commands.
+
+Hospitalization Data:
+This dataset comes in a csv format, which can be read in using R commands.
+
+Airlines Covid Data:
+This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since the there are some spaces in the excel sheet, we remade the data frame into a form that had no blank spaces, and thus easily callable by column name. 
+
+Restaurant data :
+This dataset comes in a csv format, which can be read in using R commands.
+ 
