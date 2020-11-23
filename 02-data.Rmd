@@ -51,7 +51,8 @@ Issues with data: According to the data source no statistical analysis is applie
  
  
 ## Restaurant data :
-Data source :https://www.opentable.com/state-of-industry
+Data source ''''''
+:https://www.opentable.com/state-of-industry
 About the data
 The data indexes two things.
 First, the overall impact of Covid 19 on the industry by showing year-over-year seated diners at a sample of restaurants on the OpenTable network across all channels: online reservations, phone reservations, and walk-ins. For year-over-year comparisons by day, we compare to the same day of the week from the same week in the previous year. For example, we’d compare Tuesday of week 11 in 2020 to Tuesday of week 11 in 2019. Only states or metros with 50+ restaurants on the OpenTable network for 2019 or 2020 are included in the sample. To better reflect the state of the industry overall, this dataset is based on a sample of approximately 20,000 restaurants that provide OpenTable with information on all of their inventory. This sample of restaurants typically accounts for a majority of our seated online reservations.
