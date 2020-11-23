@@ -15,5 +15,5 @@ Airlines Covid Data:
 This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since the there are some spaces in the excel sheet, we remade the data frame into a form that had no blank spaces, and thus easily callable by column name. 
 
 Restaurant data :
-This dataset comes in a csv format, which can be read in using R commands.
+This dataset comes in a csv format, which can be read in using R commands. This data contains information for other countries, we need to select US cities.
  
