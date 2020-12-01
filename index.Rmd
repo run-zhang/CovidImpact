@@ -1,6 +1,6 @@
 --- 
 title: "Covid Impact"
-author: "Run Zhang, Miranda Zhou, Mohan Dian, Neha Pusarla"
+author: "Run Zhang, Miranda Zhou, Mohan Duan, Neha Pusarla"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---

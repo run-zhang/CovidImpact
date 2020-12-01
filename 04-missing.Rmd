@@ -1,8 +1,6 @@
 # Missing values
 
 
-"something is missing"
-"change in rainie 01"
 
 Country Policy Orders: There are a few missing values county, zip_code, and total phases. This is because some states do not have details about counties. Hence there is no zip code and country details. In addition, most instances do not have total phases.
 
