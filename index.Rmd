@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "Covid Impact"
+author: "Run Zhang, Miranda Zhou, Mohan Duan, Neha Pusarla"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---

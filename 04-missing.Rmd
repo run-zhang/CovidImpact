@@ -1,5 +1,7 @@
 # Missing values
 
+
+
 Country Policy Orders: There are a few missing values county, zip_code, and total phases. This is because some states do not have details about counties. Hence there is no zip code and country details. In addition, most instances do not have total phases.
 
 Hospitalization: There are some 0 values that may be missing values in our dataset.

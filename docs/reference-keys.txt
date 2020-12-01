@@ -12,3 +12,5 @@ results
 interactive-component
 conclusion
 hospitalization-data
+about-the-data
+about-the-data-1
