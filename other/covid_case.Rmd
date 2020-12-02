@@ -1,0 +1,30 @@
+---
+title: "covid_case"
+author: "Run"
+date: "12/1/2020"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(choroplethr)
+
+# data frame must contain "region" and "value" columns
+
+df_illiteracy <- state.x77 %>% as.data.frame() %>% 
+  rownames_to_column("state") %>% 
+  transmute(region = tolower(`state`), value = Illiteracy)
+
+state_choropleth(df_illiteracy,
+                 title = "State Illiteracy Rates, 1977",
+                 legend = "Percent Illiterate")
+
+```
+```{r}
+df_case = read_csv("./da")
+df_case = state.x77 %>% as.data.frame() %>% 
+  rownames_to_column("state") %>% 
+  transmute(region = tolower(`state`), value = Illiteracy)
+
+```
+
