@@ -93,6 +93,6 @@ Types of Variables:
 year(int) - year of flight
 month(string) - month of flight  
 Total Domestic Flights Operated(int) - total number of flights operated that month/year 
-airline(string) - airline brand 
+airline(string) - brand of airline  
  
 Issues about dataset: Since there is limited information in this dataset, we will have to create additional variables using the information we have to analyze the data further and make stronger conclusions. Additional variables will include numerical variables such as the percent change in number of flights from each month in 2019 and 2020.  
