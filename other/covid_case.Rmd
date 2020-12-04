@@ -5,26 +5,104 @@ date: "12/1/2020"
 output: html_document
 ---
 
+
+load package 
 ```{r}
 library(tidyverse)
 library(choroplethr)
-
-# data frame must contain "region" and "value" columns
-
-df_illiteracy <- state.x77 %>% as.data.frame() %>% 
-  rownames_to_column("state") %>% 
-  transmute(region = tolower(`state`), value = Illiteracy)
-
-state_choropleth(df_illiteracy,
-                 title = "State Illiteracy Rates, 1977",
-                 legend = "Percent Illiterate")
-
+library(ggplot2)
+library(USAboundaries)
+library(plotly)
+library(readxl)
 ```
+
+us population estimation in 2019 from https://www.census.gov/data/tables/time-series/demo/popest/2010s-total-cities-and-towns.html 
+
+
+
+###ppldata
 ```{r}
-df_case = read_csv("./da")
-df_case = state.x77 %>% as.data.frame() %>% 
-  rownames_to_column("state") %>% 
-  transmute(region = tolower(`state`), value = Illiteracy)
+df_ppl <- read_excel("../data/nst-est2019-01.xlsx", range = c("A10:M60"),
+                      col_names = c("geographic_area", "ppl2000","ppl2000est","0","1","2","3","4","5","6","7","8","ppl2019")) %>% 
+  mutate(state = substring(geographic_area,2)) %>% 
+  select("state","ppl2019")
+
+```   
+
+### us covid cases in states
+```{r}
+# prepare covid cases df
+df_case = read.csv("../data/us-states.csv") 
+df_total_cases <-  df_case %>% 
+  filter(date == "2020-11-29") 
+
+df_total_cases <-  df_total_cases %>% 
+  merge(x = df_total_cases , y=USAboundaries :: state_codes, by.x="state", by.y = "state_name")
+df_total_cases <-  df_total_cases %>% 
+  merge(x = df_total_cases , y=df_ppl, by.x="state", by.y = "state") %>% 
+  mutate(case_ppl = cases/ppl2019) %>% 
+  mutate(case_ppl_log = log(cases/ppl2019)) %>%
+  mutate(case_log = log(cases))
+
+df_total_cases$case_ppl <-  round(df_total_cases$case_ppl, 3)
+
+df_total_cases$hover <- with(df_total_cases, paste(state, '<br>', "Covid cases",cases,"<br>",
+                                                   "Covid cases per capita",case_ppl))
+                                                   
 
 ```
+
+
+```{r}
+# give state boundaries a white border
+l <- list(color = toRGB("white"), width = 2)
+# specify some map projection/options
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)
+
+
+fig <- plot_geo(df_total_cases, locationmode = 'USA-states')
+fig1 <- fig %>% add_trace(
+    z = ~case_ppl, text = ~hover, locations = ~state_abbr,
+    color = ~case_ppl*100, colors = 'Reds'
+  )
+fig1 <- fig1 %>% colorbar(title = "number cases per capita")
+fig1 <- fig1 %>% layout(
+    title = 'Positive cases of coronavirus per capita in the United States<br>(Hover for breakdown)',
+    geo = g
+  )
+
+fig1
+
+
+```
+
+```{r}
+fig2 <- fig %>% add_trace(
+    z = ~cases, text = ~hover, locations = ~state_abbr,
+    color = ~cases, colors = 'Reds'
+  )
+fig2 <- fig2 %>% colorbar(title = "number of cases")
+fig2 <- fig2 %>% layout(
+    title = 'Positive cases of coronavirus in the United States<br>(Hover for breakdown)',
+    geo = g
+  )
+
+fig2
+
+```
+
+
+
+
+
+
+
+
+
+
 
