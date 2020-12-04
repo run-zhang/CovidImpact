@@ -13,7 +13,7 @@ library(tidyverse)
 
 
 ```{r}
-hospital <- read.csv("Downloads/reported_hospital_utilization_20201130_2136.csv")
+hospital <- read.csv("../data/reported_hospital_utilization_20201130_2136.csv")
 head(hospital)
 ```
 This data is about hospital utilization by state
@@ -87,7 +87,7 @@ staff_short_prop <- hospital$critical_staffing_shortage_today_yes / (hospital$cr
 
 # County Policy
 ```{r}
-county <- read.csv("Downloads/state_policy_updates_20201202_0721.csv")
+county <- read.csv("../data/state_policy_updates_20201202_0721.csv")
 county$policy_type <- county$policy_type
 head(county)
 ```
