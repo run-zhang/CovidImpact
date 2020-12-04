@@ -11,8 +11,8 @@ library(lubridate)
 ```
 
 ```{r}
-state_case = read.csv("us-states.csv")
-restaurant = read.csv("YoY_Seated_Diner_Data-2.csv")
+state_case = read.csv("./data/us-states.csv")
+restaurant = read.csv("./data/YoY_Seated_Diner_Data-2.csv")
 restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
                            names_to = "Date",
                            values_to = "Percentage")%>%
@@ -35,14 +35,14 @@ ggplot(US.nation.res) +
   ggtitle("Year-over-year Comparison of seated dinner in the US")
 ```
 ```{r}
-US_case = read.csv("us-states.csv")
+US_case = read.csv("./data/us-states.csv")
 US_case_by_date = US_case %>%
   mutate(date = as.Date(date))%>%
   group_by(date) %>%
   summarize(cumu_sum = sum(cases)) %>%
   mutate(daily_new = cumu_sum-lag(cumu_sum)) %>%
   drop_na()
-US_case_by_date
+# US_case_by_date
 ```
 ```{r}
 ggplot() +
@@ -52,6 +52,31 @@ ggplot() +
   theme_light()+
   ggtitle("Year-over-year Comparison of seated dinner in the US")
 ```
+### merge covid cases data and restaurant data
+```{r}
+df_case_res <- merge(x = US_case_by_date, y = US.nation.res, by.x = "date", by.y = "Date")
+```
+
+### plot 2 lines together
+### example
+```{r}
+ggplot(df_case_res, aes(x = date)) +
+  geom_line(aes(y=daily_new), color="red") +
+  geom_hline(yintercept=0, color="orange", size=.5)+ 
+  geom_line(aes(y=Percentage*2000),color="#69b3a2") +
+  scale_y_continuous(name="daily new cases", sec.axis=sec_axis(~./2000, name="res percentage")) +
+  theme(
+    axis.title.y.left=element_text(color="red"),
+    axis.text.y.left=element_text(color="red"),
+    axis.title.y.right=element_text(color="darkgreen"),
+    axis.text.y.right=element_text(color="darkgreen")
+  )
+
+
+```
+
+
+
 
 ```{r}
 library("viridis")      
