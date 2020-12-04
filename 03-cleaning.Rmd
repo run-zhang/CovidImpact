@@ -1,19 +1,17 @@
 # Data transformation
 
-
-
 Describe the process of getting the data into a form in which you could work with it in R. If your code does not lend itself to being including in the .Rmd file, provide a link to the folder or file(s) that contain(s) that code.
 Write a draft of the [Data Transformation chapter](https://edav.info/project#report-format)
 
-Country Policy Orders: 
+## Country Policy Orders: 
 This dataset comes in a csv format, which can be read in using R commands.
 
-Hospitalization Data:
+## Hospitalization Data:
 This dataset comes in a csv format, which can be read in using R commands.
 
-Airlines Covid Data:
-This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since the there are some spaces in the excel sheet, we remade the data frame into a form that had no blank spaces, and thus easily callable by column name. 
+## Airlines Covid Data:
+This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since there are some extra spaces in the excel sheet, we remade the table into a form that had no blank spaces, and thus easily callable by column name, which is a dataframe in R. Combining all the columns together into a dataframe, we then renamed the columns such that it would be representative of the information in the column. Lastly, since all the data was in character format, we converted all the columns that had numeric data to a numeric form, such that it can be easily used to create graphs and other visual structures to aid us in our exploratory analysis. Our final product of the downloaded data was a dataframe in R, which had columns that were clearly represented by their names, no missing slots or data, and all the data was the right type of class to work with. 
 
-Restaurant data :
+## Restaurant data :
 This dataset comes in a csv format, which can be read in using R commands. This data contains information for other countries, we need to select US cities.
  

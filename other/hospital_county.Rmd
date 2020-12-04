@@ -1,0 +1,141 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library(dplyr)
+library(mi)
+library(tidyverse)
+```
+
+
+```{r}
+hospital <- read.csv("Downloads/reported_hospital_utilization_20201130_2136.csv")
+head(hospital)
+```
+This data is about hospital utilization by state
+
+### Missing Values
+```{r}
+#sort(colSums(is.na(hospital)), decreasing = TRUE)
+```
+ 
+ As we see above, there are no missing values.
+
+### Data Exploration
+```{r}
+staff_shortage <- c(1:7)
+inpatient_bed <- c(1, 10:15)
+prev_day <- c(1, 16:23)
+staffed <- c(1, 24:29)
+total <- c(1, 30:39)
+inpatient_bed <- c(1, 40:51)
+icu_bed <- c(1, 52:59)
+staff_shortage_df <- hospital[,staff_shortage]
+inpatient_bed_df <- hospital[,inpatient_bed]
+prev_day_df <- hospital[,prev_day]
+total_df <- hospital[,total]
+inpatient_bed_df <- hospital[,inpatient_bed]
+icu_bed_df <- hospital[,icu_bed]
+```
+
+```{r}
+hospital[,60][1]
+```
+
+Day of recording all this information
+
+Beds used for covid
+```{r}
+total_bed <- hospital$inpatient_beds
+
+covid_bed <- hospital$inpatient_beds_used_covid
+not_covid_bed <- hospital$inpatient_beds_used - covid_bed
+empty_bed <- total_bed - hospital$inpatient_beds_used
+state <- as.factor(hospital$state)
+
+bed_usage <- data.frame(state, covid_bed, not_covid_bed, empty_bed)
+bed_usage_tidy <- bed_usage %>%
+  pivot_longer(cols = !state, names_to = "bedtype", values_to = "count")
+
+bed_usage_tidy %>%
+  ggplot(aes(fill = bedtype, x=fct_rev(state), y=count)) +
+  geom_bar(stat='identity', position='fill') +
+  coord_flip() +
+  ylab("proportion") + 
+  xlab("State") +
+  scale_fill_discrete(guide=guide_legend(reverse=T)) +
+  theme(legend.position = "bottom") +
+  ggtitle("Bed Usage by State")
+
+```
+```{r}
+bed_usage_tidy
+
+```
+
+
+```{r}
+staff_short_prop <- hospital$critical_staffing_shortage_today_yes / (hospital$critical_staffing_shortage_today_yes+hospital$critical_staffing_shortage_today_no+hospital$critical_staffing_shortage_today_not_reported)
+
+```
+
+
+
+# County Policy
+```{r}
+county <- read.csv("Downloads/state_policy_updates_20201202_0721.csv")
+county$policy_type <- county$policy_type
+head(county)
+```
+### Missing Values
+```{r}
+sort(colSums(is.na(county)), decreasing = TRUE)
+```
+```{r}
+
+x <- missing_data.frame(county)
+image(x)
+```
+
+We observe that state wide policy levels will have no values in county.
+How should we consider those values into our chart?
+
+```{r}
+unique(county$policy_type)
+```
+
+```{r}
+county$policy_type <- as.factor(county$policy_type)
+```
+
+
+```{r}
+library(tidyverse)
+ggplot(county, aes(fct_rev(fct_infreq(policy_type)))) + 
+  geom_bar() +
+  coord_flip() +
+  ggtitle("Frequency of Different Policy Types by county") +
+  xlab("Policy Types")
+```
+
+### State
+```{r}
+state <- county[county$policy_level == "state",]
+state
+```
+```{r}
+ggplot(state[state$start_stop=='start',], aes(fct_rev(fct_infreq(policy_type)))) + 
+  geom_bar() +
+  coord_flip() +
+  ggtitle("Start Policy Types by State") +
+  xlab("Policy Types")
+```
+```{r}
+CA <- state[state$state_id == 'NY',]
+CA
+```
+which state got affected the most
