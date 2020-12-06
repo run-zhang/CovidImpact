@@ -33,3 +33,10 @@ merge-covid-cases-data-and-restaurant-data
 plot-2-lines-together
 example
 data-preprocessing
+r-markdown
+covid-cases
+covid-maps
+covid-time-serires
+hospital
+airline
+reestaurant
