@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Data sources | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 2 Data sources | YOUR TITLE HERE" />
+  <title>Chapter 2 Data sources | Covid Impact</title>
+  <meta name="description" content="Chapter 2 Data sources | Covid Impact" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Data sources | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 2 Data sources | Covid Impact" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Data sources | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 2 Data sources | Covid Impact" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Run Zhang, Miranda Zhou, Mohan Duan, Neha Pusarla" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-transformation.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +50,14 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 
@@ -69,24 +74,49 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">CovidImpact</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#requirement"><i class="fa fa-check"></i><b>2.1</b> requirement</a></li>
-<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#country-policy-orders"><i class="fa fa-check"></i><b>2.2</b> Country Policy Orders</a></li>
-<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#hospitalization-data"><i class="fa fa-check"></i><b>2.3</b> Hospitalization Data</a></li>
-<li class="chapter" data-level="2.4" data-path="data-sources.html"><a href="data-sources.html#restaurant-data"><i class="fa fa-check"></i><b>2.4</b> Restaurant data :</a></li>
-<li class="chapter" data-level="2.5" data-path="data-sources.html"><a href="data-sources.html#airlines-data"><i class="fa fa-check"></i><b>2.5</b> Airlines Data</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="data-sources.html"><a href="data-sources.html#data-source"><i class="fa fa-check"></i><b>2.5.1</b> Data Source:</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#requirement"><i class="fa fa-check"></i><b>2.1</b> Requirement</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#country-policy-orders"><i class="fa fa-check"></i><b>2.2</b> Country Policy Orders</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-sources.html"><a href="data-sources.html#description"><i class="fa fa-check"></i><b>2.2.1</b> Description</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-about-dataset"><i class="fa fa-check"></i><b>2.2.2</b> Basic Information about Dataset:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#hospitalization-data"><i class="fa fa-check"></i><b>2.3</b> Hospitalization Data</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data-sources.html"><a href="data-sources.html#description-1"><i class="fa fa-check"></i><b>2.3.1</b> Description</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-on-this-dataset"><i class="fa fa-check"></i><b>2.3.2</b> Basic Information on this dataset:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-sources.html"><a href="data-sources.html#restaurant-data"><i class="fa fa-check"></i><b>2.4</b> Restaurant data :</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="data-sources.html"><a href="data-sources.html#description-2"><i class="fa fa-check"></i><b>2.4.1</b> Description</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="data-sources.html"><a href="data-sources.html#airlines-data"><i class="fa fa-check"></i><b>2.5</b> Airlines Data</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="data-sources.html"><a href="data-sources.html#description-3"><i class="fa fa-check"></i><b>2.5.1</b> Description</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-about-dataset-1"><i class="fa fa-check"></i><b>2.5.2</b> Basic Information about Dataset:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
-<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#country-policy-orders-1"><i class="fa fa-check"></i><b>3.1</b> Country Policy Orders:</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#hospitalization-data-1"><i class="fa fa-check"></i><b>3.2</b> Hospitalization Data:</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#airlines-covid-data"><i class="fa fa-check"></i><b>3.3</b> Airlines Covid Data:</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#restaurant-data-1"><i class="fa fa-check"></i><b>3.4</b> Restaurant data :</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
+<li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#country-policy-orders-2"><i class="fa fa-check"></i><b>4.1</b> Country Policy Orders:</a></li>
+<li class="chapter" data-level="4.2" data-path="missing-values.html"><a href="missing-values.html#hospitalization"><i class="fa fa-check"></i><b>4.2</b> Hospitalization:</a></li>
+<li class="chapter" data-level="4.3" data-path="missing-values.html"><a href="missing-values.html#airlines-covid-data-1"><i class="fa fa-check"></i><b>4.3</b> Airlines Covid Data:</a></li>
+<li class="chapter" data-level="4.4" data-path="missing-values.html"><a href="missing-values.html#restaurant-data-2"><i class="fa fa-check"></i><b>4.4</b> Restaurant data:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#covid-cases"><i class="fa fa-check"></i><b>5.1</b> Covid Cases</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="results.html"><a href="results.html#covid-maps"><i class="fa fa-check"></i><b>5.1.1</b> Covid Maps</a></li>
+<li class="chapter" data-level="5.1.2" data-path="results.html"><a href="results.html#covid-time-serires"><i class="fa fa-check"></i><b>5.1.2</b> Covid Time serires</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#hospital"><i class="fa fa-check"></i><b>5.2</b> Hospital</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#covid-impact-on-airlines"><i class="fa fa-check"></i><b>5.3</b> Covid Impact on Airlines:</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#covid-impact-on-restaurants"><i class="fa fa-check"></i><b>5.4</b> Covid Impact on Restaurants:</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -100,7 +130,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Covid Impact</a>
           </h1>
         </div>
 
@@ -108,27 +138,31 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-sources" class="section level1" number="2">
+<div id="data-sources" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
-<div id="requirement" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> requirement</h2>
-<p>Write a draft of the <a href="https://edav.info/project#report-format">Data Sources chapter</a>.
-Describe the data sources: who is responsible for collecting the data? How is it collected? If there were a choice of options, explain how you chose.
-Provide some basic information about the dataset: types of variables, number of records, etc.
-Describe any issues / problems with the data, either known or that you discover.
-(suggested: approximately 1 page)</p>
+<div id="requirement" class="section level2">
+<h2><span class="header-section-number">2.1</span> Requirement</h2>
+<p>Write a draft of the <a href="https://edav.info/project#report-format">Data Sources chapter</a>.  </p>
+<p>Describe the data sources: who is responsible for collecting the data? How is it collected? If there were a choice of options, explain how you chose.  </p>
+<p>Provide some basic information about the dataset: types of variables, number of records, etc. Describe any issues / problems with the data, either known or that you discover. (suggested: approximately 1 page)</p>
 </div>
-<div id="country-policy-orders" class="section level2" number="2.2">
+<div id="country-policy-orders" class="section level2">
 <h2><span class="header-section-number">2.2</span> Country Policy Orders</h2>
 <p><em>Data Source</em>:
-<a href="https://healthdata.gov/dataset/covid-19-state-and-county-policy-orders" class="uri">https://healthdata.gov/dataset/covid-19-state-and-county-policy-orders</a>
-This is a federal government website managed by the U.S. Department of Health &amp; Human Services. This data is a manually curated dataset that provides a standardized view into state and county policy orders (executive orders, ordinances, etc.) from the following sources:
+<a href="https://healthdata.gov/dataset/covid-19-state-and-county-policy-orders" class="uri">https://healthdata.gov/dataset/covid-19-state-and-county-policy-orders</a></p>
+<div id="description" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Description</h3>
+<p>This is a federal government website managed by the U.S. Department of Health &amp; Human Services. This data is a manually curated dataset that provides a standardized view into state and county policy orders (executive orders, ordinances, etc.) from the following sources:
 BU COVID-19 State Policy Database - Raifman J, Nocka K, Jones D, Bor J, Lipson S, Jay J, and Chan P. (2020). “COVID-19 US state policy database.”
-wikidata - Stay At Home Policies Queried from WikiData
-Manual curation by a dedicated group of Virtual Student Federal Service Interns - Summer 2020: T Adler, J Bastian, L Beckett, M Cohen, K Honey, C Kennedy, E Nudell
-We chose this dataset over the BU google form linked in the sources because this dataset is much more consolidated. In addition, the website seems more reputable because it is from the government.</p>
-<p><em>Basic Information about Dataset</em>: The dataset has categories: State, county, zip code, policy level, date, start stop, comments, source, total phases. There are 3507 instances. The details are as below taken from their dictionary (<a href="https://healthdata.gov/covid-19-state-and-county-policy-orders-data-dictionary" class="uri">https://healthdata.gov/covid-19-state-and-county-policy-orders-data-dictionary</a>):
-state_id (string): The two digit state code for the policy change
+wikidata - Stay At Home Policies Queried from WikiData.<br />
+</p>
+<p>Manual curation by a dedicated group of Virtual Student Federal Service Interns - Summer 2020: T Adler, J Bastian, L Beckett, M Cohen, K Honey, C Kennedy, E Nudell.  </p>
+<p>We chose this dataset over the BU google form linked in the sources because this dataset is much more consolidated. In addition, the website seems more reputable because it is from the government.</p>
+</div>
+<div id="basic-information-about-dataset" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Basic Information about Dataset:</h3>
+<p>The dataset has categories: State, county, zip code, policy level, date, start stop, comments, source, total phases. There are 3507 instances. The details are as below taken from their dictionary (<a href="https://healthdata.gov/covid-19-state-and-county-policy-orders-data-dictionary" class="uri">https://healthdata.gov/covid-19-state-and-county-policy-orders-data-dictionary</a>):  </p>
+<p>state_id (string): The two digit state code for the policy change
 county (optional string): The county name where the policy change was implemented. Optional due to counties occasionally implementing their own policies.</p>
 <p>fips_code (string): A list of fips codes where the policy change is occurring. This is the authoritative column for where a county policy change occurs.
 policy_level (string): Whether the policy is a state of county-level policy. Either “state” or “county.”</p>
@@ -140,14 +174,20 @@ policy_level (string): Whether the policy is a state of county-level policy. Eit
 <p>total_phases (integer): As some states shifted to reopening policies, this column captures the number of phases of reopening that were expected.</p>
 <p><em>Issues about data</em>: This dataset pulls from many different sources. Hence, there are some missing values because some instances only have information about states in general rather than counties.</p>
 </div>
-<div id="hospitalization-data" class="section level2" number="2.3">
+</div>
+<div id="hospitalization-data" class="section level2">
 <h2><span class="header-section-number">2.3</span> Hospitalization Data</h2>
 <p><em>Data Source</em>:
-<a href="https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state" class="uri">https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state</a></p>
+<a href="https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state" class="uri">https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state</a>  </p>
 <p><a href="https://healthdata.gov/dataset/covid-19-reported-patient-impact-and-hospital-capacity-state" class="uri">https://healthdata.gov/dataset/covid-19-reported-patient-impact-and-hospital-capacity-state</a></p>
-<p>This is a federal government website managed by the U.S. Department of Health &amp; Human Services. The following dataset provides state-aggregated data for hospital utilization. These are derived from reports with facility-level granularity across two main sources: (1) HHS TeleTracking, and (2) reporting provided directly to HHS Protect by state/territorial health departments on behalf of their healthcare facilities. The file will be updated daily and provides the latest values reported by each facility within the last four days. This allows for a more comprehensive picture of the hospital utilization within a state by ensuring a hospital is represented, even if they miss a single day of reporting.
-We chose this dataset because it is from a very official source and is consolidated rather than its sources.</p>
-<p><em>Basic Information on this dataset</em>: They are all numerical values. Some percentages and some numbers. There are 60 different columns and 54 instances. Details of all the columns are listed in this dictionary
+<div id="description-1" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Description</h3>
+<p>This is a federal government website managed by the U.S. Department of Health &amp; Human Services. The following dataset provides state-aggregated data for hospital utilization. These are derived from reports with facility-level granularity across two main sources: (1) HHS TeleTracking, and (2) reporting provided directly to HHS Protect by state/territorial health departments on behalf of their healthcare facilities. The file will be updated daily and provides the latest values reported by each facility within the last four days. This allows for a more comprehensive picture of the hospital utilization within a state by ensuring a hospital is represented, even if they miss a single day of reporting.  </p>
+<p>We chose this dataset because it is from a very official source and is consolidated rather than its sources.</p>
+</div>
+<div id="basic-information-on-this-dataset" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Basic Information on this dataset:</h3>
+<p>They are all numerical values. Some percentages and some numbers. There are 60 different columns and 54 instances. Details of all the columns are listed in this dictionary
 (<a href="https://healthdata.gov/covid-19-reported-patient-impact-and-hospital-capacity-state-data-dictionary" class="uri">https://healthdata.gov/covid-19-reported-patient-impact-and-hospital-capacity-state-data-dictionary</a>) Some examples are listed below:</p>
 <p>state: The two digit state code</p>
 <p>critical_staffing_shortage_today_yes: Number of hospitals reporting a critical staffing shortage today in this state.</p>
@@ -162,27 +202,34 @@ We chose this dataset because it is from a very official source and is consolida
 <p>reporting_cutoff_start: Look back date start - The latest reports from each hospital is summed for this report starting with this date.</p>
 <p><em>Issues with data</em>: According to the data source no statistical analysis is applied to account for non-response and/or to account for missing data. Otherwise, we do not see major issues.</p>
 </div>
-<div id="restaurant-data" class="section level2" number="2.4">
+</div>
+<div id="restaurant-data" class="section level2">
 <h2><span class="header-section-number">2.4</span> Restaurant data :</h2>
 <p><em>Data source</em>
-<a href="https://www.opentable.com/state-of-industry" class="uri">https://www.opentable.com/state-of-industry</a>
-### About the data
-The data indexes two things.
-First, the overall impact of Covid 19 on the industry by showing year-over-year seated diners at a sample of restaurants on the OpenTable network across all channels: online reservations, phone reservations, and walk-ins. For year-over-year comparisons by day, we compare to the same day of the week from the same week in the previous year. For example, we’d compare Tuesday of week 11 in 2020 to Tuesday of week 11 in 2019. Only states or metros with 50+ restaurants on the OpenTable network for 2019 or 2020 are included in the sample. To better reflect the state of the industry overall, this dataset is based on a sample of approximately 20,000 restaurants that provide OpenTable with information on all of their inventory. This sample of restaurants typically accounts for a majority of our seated online reservations.
+<a href="https://www.opentable.com/state-of-industry" class="uri">https://www.opentable.com/state-of-industry</a></p>
+<div id="description-2" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Description</h3>
+<p>The data indexes two things.  
+First, the overall impact of Covid 19 on the industry by showing year-over-year seated diners at a sample of restaurants on the OpenTable network across all channels: online reservations, phone reservations, and walk-ins. For year-over-year comparisons by day, we compare to the same day of the week from the same week in the previous year. For example, we’d compare Tuesday of week 11 in 2020 to Tuesday of week 11 in 2019. Only states or metros with 50+ restaurants on the OpenTable network for 2019 or 2020 are included in the sample. To better reflect the state of the industry overall, this dataset is based on a sample of approximately 20,000 restaurants that provide OpenTable with information on all of their inventory. This sample of restaurants typically accounts for a majority of our seated online reservations. 
 Second, a comparison of year-over-year seated covers to demonstrate where we are seeing recovery start to take shape. This table shows year-over-year seated covers across all channels at only the restaurants that have chosen to reopen in a given market. As an example, if there were 50 seated covers in restaurants that have recently reopened in a given locale on May 11, 2019 and on the same day in 2020 there was 1, then 2% will be displayed. For this chart, only markets with 500+ restaurants on OpenTable of which 10%+ are accepting online reservations are included.</p>
 </div>
-<div id="airlines-data" class="section level2" number="2.5">
+</div>
+<div id="airlines-data" class="section level2">
 <h2><span class="header-section-number">2.5</span> Airlines Data</h2>
-<div id="data-source" class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Data Source:</h3>
-<p><a href="https://www.bts.gov/data-spotlight/airlines-july-operations" class="uri">https://www.bts.gov/data-spotlight/airlines-july-operations</a></p>
-<p>This airlines data is from the Bureau of Transportation Statistics. The BTS is part of the Department of Transportation and is the main source of data on many different transportation factors such as commercial aviation, transportation economics, and freight activity. The data provided on this website is collected from the Bureau’s National Transportation Library, which contains many different publications and information about the transportation community. We chose this dataset because it provides valuable information on how the airline community was affected by the oncoming of the now widespread pandemic, Covid-19.
-Types of Variables:</p>
+<p><em>Data source</em>
+<a href="https://www.bts.gov/data-spotlight/airlines-july-operations" class="uri">https://www.bts.gov/data-spotlight/airlines-july-operations</a></p>
+<div id="description-3" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Description</h3>
+<p>This airlines data is from the Bureau of Transportation Statistics. The BTS is part of the Department of Transportation and is the main source of data on many different transportation factors such as commercial aviation, transportation economics, and freight activity. The data provided on this website is collected from the Bureau’s National Transportation Library, which contains many different publications and information about the transportation community. We chose this dataset because it provides valuable information on how the airline community was affected by the oncoming of the now widespread pandemic, Covid-19.<br />
+</p>
+</div>
+<div id="basic-information-about-dataset-1" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Basic Information about Dataset:</h3>
 <p>year(int) - year of flight
 month(string) - month of flight<br />
 Total Domestic Flights Operated(int) - total number of flights operated that month/year
 airline(string) - airline brand</p>
-<p>Issues about dataset: Since there is limited information in this dataset, we will have to create additional variables using the information we have to analyze the data further and make stronger conclusions.</p>
+<p>Issues about dataset: Since there is limited information in this dataset, we will have to manipulate some variables using the information we have to analyze the data further and make stronger conclusions. Additional variables will include numerical variables such as the percent change in number of flights from each month in 2019 and 2020.</p>
 
 </div>
 </div>
@@ -224,7 +271,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/02-data.Rmd",
+"link": "https://github.com/run-zhang/CovidImpact/edit/main/02-data.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -232,7 +279,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/02-data.Rmd",
+"link": "https://github.com/run-zhang/CovidImpact/blob/main/02-data.Rmd",
 "text": null
 },
 "download": null,

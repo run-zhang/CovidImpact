@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Missing values | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 4 Missing values | YOUR TITLE HERE" />
+  <title>Chapter 4 Missing values | Covid Impact</title>
+  <meta name="description" content="Chapter 4 Missing values | Covid Impact" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Missing values | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 4 Missing values | Covid Impact" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Missing values | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 4 Missing values | Covid Impact" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Run Zhang, Miranda Zhou, Mohan Duan, Neha Pusarla" />
 
 
-<meta name="date" content="2020-12-01" />
+<meta name="date" content="2020-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,13 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 
@@ -67,24 +74,49 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">CovidImpact</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a><ul>
 <li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#requirement"><i class="fa fa-check"></i><b>2.1</b> Requirement</a></li>
-<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#country-policy-orders"><i class="fa fa-check"></i><b>2.2</b> Country Policy Orders</a></li>
-<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#hospitalization-data"><i class="fa fa-check"></i><b>2.3</b> Hospitalization Data</a></li>
+<li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#country-policy-orders"><i class="fa fa-check"></i><b>2.2</b> Country Policy Orders</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-sources.html"><a href="data-sources.html#description"><i class="fa fa-check"></i><b>2.2.1</b> Description</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-about-dataset"><i class="fa fa-check"></i><b>2.2.2</b> Basic Information about Dataset:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#hospitalization-data"><i class="fa fa-check"></i><b>2.3</b> Hospitalization Data</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data-sources.html"><a href="data-sources.html#description-1"><i class="fa fa-check"></i><b>2.3.1</b> Description</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-on-this-dataset"><i class="fa fa-check"></i><b>2.3.2</b> Basic Information on this dataset:</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="data-sources.html"><a href="data-sources.html#restaurant-data"><i class="fa fa-check"></i><b>2.4</b> Restaurant data :</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="data-sources.html"><a href="data-sources.html#about-the-data"><i class="fa fa-check"></i><b>2.4.1</b> About the data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="data-sources.html"><a href="data-sources.html#description-2"><i class="fa fa-check"></i><b>2.4.1</b> Description</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="data-sources.html"><a href="data-sources.html#airlines-data"><i class="fa fa-check"></i><b>2.5</b> Airlines Data</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="data-sources.html"><a href="data-sources.html#about-the-data-1"><i class="fa fa-check"></i><b>2.5.1</b> About the data</a></li>
+<li class="chapter" data-level="2.5.1" data-path="data-sources.html"><a href="data-sources.html#description-3"><i class="fa fa-check"></i><b>2.5.1</b> Description</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-about-dataset-1"><i class="fa fa-check"></i><b>2.5.2</b> Basic Information about Dataset:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
-<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#country-policy-orders-1"><i class="fa fa-check"></i><b>3.1</b> Country Policy Orders:</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#hospitalization-data-1"><i class="fa fa-check"></i><b>3.2</b> Hospitalization Data:</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#airlines-covid-data"><i class="fa fa-check"></i><b>3.3</b> Airlines Covid Data:</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#restaurant-data-1"><i class="fa fa-check"></i><b>3.4</b> Restaurant data :</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
+<li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#country-policy-orders-2"><i class="fa fa-check"></i><b>4.1</b> Country Policy Orders:</a></li>
+<li class="chapter" data-level="4.2" data-path="missing-values.html"><a href="missing-values.html#hospitalization"><i class="fa fa-check"></i><b>4.2</b> Hospitalization:</a></li>
+<li class="chapter" data-level="4.3" data-path="missing-values.html"><a href="missing-values.html#airlines-covid-data-1"><i class="fa fa-check"></i><b>4.3</b> Airlines Covid Data:</a></li>
+<li class="chapter" data-level="4.4" data-path="missing-values.html"><a href="missing-values.html#restaurant-data-2"><i class="fa fa-check"></i><b>4.4</b> Restaurant data:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#covid-cases"><i class="fa fa-check"></i><b>5.1</b> Covid Cases</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="results.html"><a href="results.html#covid-maps"><i class="fa fa-check"></i><b>5.1.1</b> Covid Maps</a></li>
+<li class="chapter" data-level="5.1.2" data-path="results.html"><a href="results.html#covid-time-serires"><i class="fa fa-check"></i><b>5.1.2</b> Covid Time serires</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#hospital"><i class="fa fa-check"></i><b>5.2</b> Hospital</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#covid-impact-on-airlines"><i class="fa fa-check"></i><b>5.3</b> Covid Impact on Airlines:</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#covid-impact-on-restaurants"><i class="fa fa-check"></i><b>5.4</b> Covid Impact on Restaurants:</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -98,7 +130,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Covid Impact</a>
           </h1>
         </div>
 
@@ -108,13 +140,24 @@
             <section class="normal" id="section-">
 <div id="missing-values" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Missing values</h1>
-<p>“something is missing”
-“change in rainie 01”</p>
-<p>Country Policy Orders: There are a few missing values county, zip_code, and total phases. This is because some states do not have details about counties. Hence there is no zip code and country details. In addition, most instances do not have total phases.</p>
-<p>Hospitalization: There are some 0 values that may be missing values in our dataset.</p>
-<p>Airlines Covid Data: There are no values missing in our dataset.</p>
-<p>Restaurant data: There are many missing values in the dataset before May 2020. We also need to extract data for US.</p>
+<p>Describe any patterns you discover in missing values.</p>
+<div id="country-policy-orders-2" class="section level2">
+<h2><span class="header-section-number">4.1</span> Country Policy Orders:</h2>
+<p>There are a few missing values county, zip_code, and total phases. This is because some states do not have details about counties. Hence there is no zip code and country details. In addition, most instances do not have total phases.</p>
+</div>
+<div id="hospitalization" class="section level2">
+<h2><span class="header-section-number">4.2</span> Hospitalization:</h2>
+<p>There are some 0 values that may be missing values in our dataset.</p>
+</div>
+<div id="airlines-covid-data-1" class="section level2">
+<h2><span class="header-section-number">4.3</span> Airlines Covid Data:</h2>
+<p>There are no values missing in our dataset. The only “missing values” we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary.</p>
+</div>
+<div id="restaurant-data-2" class="section level2">
+<h2><span class="header-section-number">4.4</span> Restaurant data:</h2>
+<p>There are many missing values in the dataset before May 2020. We also need to extract data for US.</p>
 
+</div>
 </div>
             </section>
 
@@ -153,7 +196,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/04-missing.Rmd",
+"link": "https://github.com/run-zhang/CovidImpact/edit/main/04-missing.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -161,7 +204,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/04-missing.Rmd",
+"link": "https://github.com/run-zhang/CovidImpact/blob/main/04-missing.Rmd",
 "text": null
 },
 "download": null,
