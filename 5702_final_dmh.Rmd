@@ -8,12 +8,24 @@ library(dplyr)
 library(ggplot2)
 library(stringr)
 library(lubridate)
+library(ggpubr)
+library(mi)
 ```
+### data preprocessing
+The original YoY_Seated_Diner_Data-2.csv file contains information about 8 country of 60 state and 60 cities. Here we only extract US state information 
+
+There are many NA's but we decide to subset the data we need and then deal with NA's
 
 ```{r}
-state_case = read.csv("us-states.csv")
-restaurant = read.csv("YoY_Seated_Diner_Data-2.csv")
+us_case = read.csv("./data/us-states.csv")
+restaurant = read.csv("./data/YoY_Seated_Diner_Data-2.csv")
 restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
+                           names_to = "Date",
+                           values_to = "Percentage")%>%
+               mutate(Date = paste0("2020.",str_remove(Date,"X")))%>%
+               mutate(Date = as.Date(chartr(old = ".", new = "-", Date)))
+reopen = read.csv("./data/YoY_Reopened_Seated_Diner_Data.csv")
+reopen1 = reopen %>% pivot_longer(cols = starts_with("X"),
                            names_to = "Date",
                            values_to = "Percentage")%>%
                mutate(Date = paste0("2020.",str_remove(Date,"X")))%>%
@@ -22,11 +34,43 @@ restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
 Firstly we want to see the US national trend of restaurant reservation compared to the same time last year.
 
 ```{r}
-head(restaurant1)
-```
-```{r}
+us_states = c('Alabama','Arizona','California','Colorado', 'Connecticut',
+       'District of Columbia','Florida', 'Georgia', 'Hawaii', 'Illinois',
+       'Indiana', 'Kansas', 'Kentucky', 'Louisiana',
+       'Maryland', 'Massachusetts', 'Michigan',
+       'Minnesota', 'Missouri', 'Nebraska', 'Nevada', 'New Jersey',
+       'New Mexico', 'New York', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon',
+       'Pennsylvania','Rhode Island', 'South Carolina', 'Tennessee', 
+       'Texas', 'Utah', 'Virginia', 'Washington', 'Wisconsin')
+
+restaurant_state = restaurant1[restaurant1$Type == 'state',]
+restaurant_state = restaurant_state[restaurant_state$Name %in% us_states,]
 US.nation.res = restaurant1[which(restaurant1$Type=="country" & restaurant1$Name=="United States"), ]
 
+reopen_state = reopen1[reopen1$Type == 'state',]
+reopen_state = reopen_state[reopen_state$Name %in% us_states,]
+```
+
+### Missing Values
+```{r}
+sum(is.na(restaurant_state))
+```
+
+By observing reopen dataset, we notice that each state contain consecutive missing values in the started from the beginning of April. And the first non-NA value started when this stated reopen for in-door dinning. Hence, states have more NA's reopen later, and may be more conservative for allowing reopenning.
+From the number of NA, we can already know Texas, Florida reopen early for in-door dinning, New Jersey and New York reopen later for in-door dining
+```{r}
+reopen_na <- reopen_state %>%
+  group_by(Name) %>%
+  summarize(count_na = sum(is.na(Percentage))) %>%
+  arrange(count_na)
+reopen_na$Name = factor(reopen_na$Name,levels = reopen_na$Name)
+ggplot(reopen_na)+
+  geom_col(aes(x = Name,y = count_na))+
+  ggtitle("Missing Value count plot")
+```
+
+
+```{r}
 ggplot(US.nation.res) +
   geom_line(aes(x=Date, y=Percentage),color="#69b3a2") + 
   geom_hline(yintercept=0, color="orange", size=.5)+ 
@@ -35,7 +79,7 @@ ggplot(US.nation.res) +
   ggtitle("Year-over-year Comparison of seated dinner in the US")
 ```
 ```{r}
-US_case = read.csv("us-states.csv")
+US_case = read.csv("./data/us-states.csv")
 US_case_by_date = US_case %>%
   mutate(date = as.Date(date))%>%
   group_by(date) %>%
@@ -45,7 +89,7 @@ US_case_by_date = US_case %>%
 US_case_by_date
 ```
 ```{r}
-ggplot() +
+p1 <- ggplot() +
   geom_line(data = US.nation.res,aes(x=Date, y=Percentage),color="#69b3a2") + 
   geom_hline(yintercept=0, color="orange", size=.5)+ 
   theme(axis.text.x=element_text(angle=60, hjust=1))+
@@ -65,28 +109,21 @@ The heatmap above shows the number of seated diners by state from February until
 Hawaii's restaurant industry was hit hardest and just had a slight recovery after November. District of Columbia also has a visibly severe impact on sitted dinner than other states. People in New York, New Jersey and Washinton seem to go for sitted dinner later. On the contrary,Alabama, Arizona, Florida, Oklahoma and Texas start eating out earlier. 
 
 ```{r}
-ggplot() +
+p2<- ggplot() +
   geom_line(data = US_case_by_date,aes(x=date, y=daily_new),color="orange") + 
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
   ggtitle("Daily COVID case in US")
 ```
-
-
-### data preprocessing
 ```{r}
-us_states = c('Alabama','Arizona','California','Colorado', 'Connecticut',
-       'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Illinois',
-       'Indiana', 'Kansas', 'Kentucky', 'Louisiana',
-       'Maryland', 'Massachusetts', 'Michigan',
-       'Minnesota', 'Missouri', 'Nebraska', 'Nevada', 'New Jersey',
-       'New Mexico', 'New York', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon',
-       'Pennsylvania','Rhode Island', 'South Carolina', 'Tennessee', 
-       'Texas', 'Utah', 'Virginia', 'Washington', 'Wisconsin')
+ggarrange(p1,p2,nrow=2)
 ```
+From the year-over-year seated dinner rate plot, we can see the seated dinner hugely drop to -100% compared to the same time of last year, means all the seated dinner stopped nationwide by late March. The seated dinner rate started to increase starting from late April to June. After late June, the seated dinner rate became stable and showing an obious weekly pattern. By comparing the seated dinner rate and daily covid trend together, we can see that after states are reopen for seated dinner, the in-door dining rate did not change so much coresponding to change of COVID cases. Especially, after mid October, the daily covid case change hugely but people's willingness of in-door dining does not change so much, which might be dangerous.
+
+After knowing the national situation, We want to know New York COVID situation was after reopen for in-door dinning.
 
 ```{r}
-restaurant_state = restaurant1[restaurant1$Type == 'state',]
-restaurant_state = restaurant_state[restaurant_state$Name %in% us_states,]
+ggplot()
 ```
-The original YoY_Seated_Diner_Data-2.csv file contains information about 8 country of 60 state and 60 cities. Here we only extract US state information 
+
+
