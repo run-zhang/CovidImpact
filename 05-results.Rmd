@@ -88,6 +88,6 @@ fig1
 
 ## Hospital 
 
-## Airline 
+## Covid Impact on Airlines: 
 
-## Reestaurant
+## Covid Impact on Restaurants:

@@ -40,3 +40,5 @@ covid-time-serires
 hospital
 airline
 reestaurant
+covid-impact-on-airlines
+covid-impact-on-restaurants
