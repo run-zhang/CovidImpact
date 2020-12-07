@@ -101,9 +101,9 @@ df_total_cases %>%
   mutate(state = fct_reorder(state, desc(-cases))) %>%
   ggplot(aes(x = state, y = cases)) +
     geom_point(stat = "identity")+
-    coord_flip() 
-  
-
+    coord_flip() +
+    ggtitle("Total Confirmed Covid19 Cases for Each State in The U.S.")
+    
 ```
 
 
@@ -139,6 +139,9 @@ ggplot(us_cases1,aes(date,new_cases)) +
 ```
 
 
+```{r}
+
+```
 
 
 
