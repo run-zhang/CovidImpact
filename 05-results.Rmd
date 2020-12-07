@@ -4,10 +4,12 @@ This is results.
 ```{r}
 library(tidyverse)
 library(choroplethr)
+library(dplyr)
 library(ggplot2)
 library(USAboundaries)
 library(plotly)
 library(readxl)
+library(ggpubr)
 ```
 
 ## Covid Cases
