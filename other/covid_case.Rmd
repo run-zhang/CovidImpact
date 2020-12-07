@@ -97,6 +97,18 @@ fig2
 ```
 
 ```{r}
+df_total_cases %>%
+  mutate(state = fct_reorder(state, desc(-cases))) %>%
+  ggplot(aes(x = state, y = cases)) +
+    geom_point(stat = "identity")+
+    coord_flip() 
+  
+
+```
+
+
+
+```{r}
 #data process, us_cases1 is the overall us cases per day
 us_cases1 <- df_case  %>% 
   count( date,wt = cases,name = "total_cases") %>% 

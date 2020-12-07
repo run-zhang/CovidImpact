@@ -47,7 +47,39 @@ hospital[,60][1]
 
 All data in this folder is recorded for the date above.
 
+
+
+
 ### Beds use for covid
+```{r}
+#testing
+total_bed <- hospital$inpatient_beds
+
+covid_bed <- hospital$inpatient_beds_used_covid
+not_covid_bed <- hospital$inpatient_beds_used - covid_bed
+empty_bed <- total_bed - hospital$inpatient_beds_used
+state <- as.factor(hospital$state)
+
+bed_usage <- data.frame(state, covid_bed, not_covid_bed, empty_bed)
+bed_usage_tidy <- bed_usage %>% 
+  mutate(covid_bed_perc = covid_bed/(covid_bed+not_covid_bed+empty_bed)) %>% 
+  pivot_longer(cols = !c(state,covid_bed_perc), names_to = "bedtype", values_to = "count") %>% 
+  mutate(state = fct_reorder(state, desc(-covid_bed_perc))) %>% 
+  mutate(bedtype = factor(bedtype, level = c("covid_bed","empty_bed","not_covid_bed")))
+
+  ggplot(bed_usage_tidy,aes(x = state , y = count, fill = (bedtype))) + 
+    geom_bar(,stat = "identity", position = position_fill(reverse = TRUE)) + 
+    scale_y_continuous(labels = scales::percent_format()) +
+    labs(x = 'state') +
+    coord_flip() +
+    ylab("proportion") + 
+    xlab("State") +
+    theme(legend.position = "bottom") +
+    ggtitle("Inpatient Bed Usage by State")
+```
+
+
+
 ```{r}
 total_bed <- hospital$inpatient_beds
 
@@ -59,6 +91,7 @@ state <- as.factor(hospital$state)
 bed_usage <- data.frame(state, covid_bed, not_covid_bed, empty_bed)
 bed_usage_tidy <- bed_usage %>%
   pivot_longer(cols = !state, names_to = "bedtype", values_to = "count")
+
 
 bed_usage_tidy %>%
   ggplot(aes(fill = bedtype, x=fct_rev(state), y=count)) +
