@@ -26,6 +26,7 @@ results
 covid-cases
 covid-maps
 covid-time-serires
+covid19-cases-in-time-series
 hospital
 covid-impact-on-airlines
 covid-impact-on-restaurants

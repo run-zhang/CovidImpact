@@ -12,6 +12,8 @@ library(readxl)
 
 ## Covid Cases
 ```{r}
+#data process
+# prepare population per states data
 df_ppl <- read_excel("./data/nst-est2019-01.xlsx", range = c("A10:M60"),
                       col_names = c("geographic_area", "ppl2000","ppl2000est","0","1","2","3","4","5","6","7","8","ppl2019")) %>% 
   mutate(state = substring(geographic_area,2)) %>% 
@@ -19,9 +21,10 @@ df_ppl <- read_excel("./data/nst-est2019-01.xlsx", range = c("A10:M60"),
 
 # prepare covid cases df
 df_case = read.csv("./data/us-states.csv") 
+
+
 df_total_cases <-  df_case %>% 
   filter(date == "2020-11-29") 
-
 df_total_cases <-  df_total_cases %>% 
   merge(x = df_total_cases , y=USAboundaries :: state_codes, by.x="state", by.y = "state_name")
 df_total_cases <-  df_total_cases %>% 
@@ -82,9 +85,36 @@ fig1
 
 
 
+## Covid Time serires
 
 
-### Covid Time serires
+
+### Covid19 Cases in Time Series
+```{r}
+#data process, us_cases1 is the overall us cases per day
+us_cases1 <- df_case  %>% 
+  count(date,wt = cases,name = "total_cases") %>% 
+  mutate(date = as.Date(date)) %>% 
+  mutate(new_cases = (c(1,diff(total_cases))))
+```
+
+```{r}
+ggplot(us_cases1,aes(x=date,y=total_cases)) +
+  geom_line(color="#69b3a2") + 
+  scale_x_date(date_breaks = "1 month", date_labels = "%b")+
+  theme_light()+
+  ggtitle("Cumulative Covid19 Cases in the US")
+```
+
+```{r}
+ggplot(us_cases1,aes(date,new_cases)) +
+  geom_line(color="#69b3a2") + 
+  geom_smooth(method = "loess", se = FALSE,span=0.2, lwd = 0.8) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b")+
+  theme_light()+
+  ylab("daily increase")
+  ggtitle("Daily New Covid19 Cases in the US")
+```
 
 ## Hospital 
 
