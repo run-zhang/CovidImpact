@@ -16,6 +16,7 @@ library(tidyverse)
 
 Data Transformation 
 ```{r}
+<<<<
 data <- read_excel("../data/scheduled-canceled-operated-flights-jan2019-jul2020.xlsx")
 
 year <- c(2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019,
@@ -76,6 +77,7 @@ ggplot(tot_flight_data, aes(x = year, y = flights)) +
   ggtitle("Bar Graph of Total Flights in First 7 Months 2019 vs. 2020") 
 ```
 
+
 Using only the first 7 months of the 2019 data to compare its results more accuractely with the first 7 months of the 2020 data, there is still a clear distinctment between the number of flights taken in 2019 vs. 2020. But, since we are using all of our 2020 data, we cannot make any analyses on the effect of the pandemic on travel as travel restrictions began in March. Therefore, we are going to plot the pattern of flights taken throughout last year and this year to analyze the impact.
 
 ```{r}
@@ -124,6 +126,7 @@ tidydf <- data_2020 %>%
 tidydf <- tidydf %>% select(month, cases, flights) %>%
   gather(key = "variable", value = "value", -month)
 
+
 p1 <- ggplot() +
   geom_line(data = data_2020, aes(x=fct_inorder(month), y=Tot_Flights, group=1),color="#69b3a2") + 
   geom_point(size = 4) + 
@@ -143,6 +146,7 @@ p2<- ggplot() +
   ylab("Total Cases")
 
 ggarrange(p1,p2,nrow=2)
+
 ```
 
 This graph shows when the coronavirus hit the United States hard, and affected many different factors, one being the airline industry and travel. Although there were cases in January, the number of cases quickly ramped up from March to April, which correlates with the decline in travel. From the graph, it can be seen that around May, although cases were still increasing, travel started to increase again, as people started to most likely relax on restrictions. 
@@ -193,6 +197,4 @@ ggplot(top_drops, aes(fct_inorder(month), value, group = variable)) +
 This graph shows the time series data of the top four airline brands affected, taken from the previous graph. The trends stay consistent with the trends that we've been seeing in the previous graphs. 
 
 Final Findings on Airline Data: 
-The most revealing findings from this exploratory data analysis 
-showed a couple of things. Firstly, there was a major decrease
-in flights from the year 2019 to the year 2020. Secondly, the number of flights mainly dropped in April of 2020, correlating with the time that the lockdown started and travel restrictions were placed everywhere. Looking at each airline, there was a decrease of the total number of flights taken for each airline, showing that almost every airline industry was affected by the pandemic. Some airlines had a decrease in flights by more than 60%, showing the intensity of the effect on the airline industry. More than half of their revenue was gone. Overall, in terms of the effect on travel during the coronavirus pandemic, there are clear patterns that show that travel was greatly affected. Airplanes were not a first choice method of transporation anymore, as people were not even travelling in the first place. This major decline in airline transportation and travel in and out of the United States, shows how greatly the pandemic played a role in the decline of the airline industry. 
+The most revealing findings from this exploratory data analysis showed a couple of things. Firstly, there was a major decrease in flights from the year 2019 to the year 2020. Secondly, the number of flights mainly dropped in April of 2020, correlating with the time that the lockdown started and travel restrictions were placed everywhere. Looking at each airline, there was a decrease of the total number of flights taken for each airline, showing that almost every airline industry was affected by the pandemic. Some airlines had a decrease in flights by more than 60%, showing the intensity of the effect on the airline industry. More than half of their revenue was gone. Overall, in terms of the effect on travel during the coronavirus pandemic, there are clear patterns that show that travel was greatly affected. Airplanes were not a first choice method of transporation anymore, as people were not even travelling in the first place. This major decline in airline transportation and travel in and out of the United States, shows how greatly the pandemic played a role in the decline of the airline industry. 

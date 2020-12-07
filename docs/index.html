@@ -24,7 +24,7 @@
 <meta name="author" content="Run Zhang, Miranda Zhou, Mohan Duan, Neha Pusarla" />
 
 
-<meta name="date" content="2020-12-03" />
+<meta name="date" content="2020-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,13 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 
@@ -101,14 +108,17 @@
 <li class="chapter" data-level="4.3" data-path="missing-values.html"><a href="missing-values.html#airlines-covid-data-1"><i class="fa fa-check"></i><b>4.3</b> Airlines Covid Data:</a></li>
 <li class="chapter" data-level="4.4" data-path="missing-values.html"><a href="missing-values.html#restaurant-data-2"><i class="fa fa-check"></i><b>4.4</b> Restaurant data:</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
-<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a><ul>
-<li class="chapter" data-level="7.0.1" data-path="conclusion.html"><a href="conclusion.html#merge-covid-cases-data-and-restaurant-data"><i class="fa fa-check"></i><b>7.0.1</b> merge covid cases data and restaurant data</a></li>
-<li class="chapter" data-level="7.0.2" data-path="conclusion.html"><a href="conclusion.html#plot-2-lines-together"><i class="fa fa-check"></i><b>7.0.2</b> plot 2 lines together</a></li>
-<li class="chapter" data-level="7.0.3" data-path="conclusion.html"><a href="conclusion.html#example"><i class="fa fa-check"></i><b>7.0.3</b> example</a></li>
-<li class="chapter" data-level="7.0.4" data-path="conclusion.html"><a href="conclusion.html#data-preprocessing"><i class="fa fa-check"></i><b>7.0.4</b> data preprocessing</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#covid-cases"><i class="fa fa-check"></i><b>5.1</b> Covid Cases</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="results.html"><a href="results.html#covid-maps"><i class="fa fa-check"></i><b>5.1.1</b> Covid Maps</a></li>
+<li class="chapter" data-level="5.1.2" data-path="results.html"><a href="results.html#covid19-cases-in-time-series"><i class="fa fa-check"></i><b>5.1.2</b> Covid19 Cases in Time Series</a></li>
 </ul></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#hospital"><i class="fa fa-check"></i><b>5.2</b> Hospital</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#covid-impact-on-airlines"><i class="fa fa-check"></i><b>5.3</b> Covid Impact on Airlines:</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#covid-impact-on-restaurants"><i class="fa fa-check"></i><b>5.4</b> Covid Impact on Restaurants:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -131,7 +141,7 @@
 <div id="header">
 <h1 class="title">Covid Impact</h1>
 <p class="author"><em>Run Zhang, Miranda Zhou, Mohan Duan, Neha Pusarla</em></p>
-<p class="date"><em>2020-12-03</em></p>
+<p class="date"><em>2020-12-06</em></p>
 </div>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>

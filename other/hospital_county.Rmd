@@ -13,19 +13,18 @@ library(tidyverse)
 
 
 ```{r}
-hospital <- read.csv("Downloads/reported_hospital_utilization_20201130_2136.csv")
+hospital <- read.csv("../data/reported_hospital_utilization_20201130_2136.csv")
 head(hospital)
 ```
 This data is about hospital utilization by state
 
 ### Missing Values
 ```{r}
-#sort(colSums(is.na(hospital)), decreasing = TRUE)
+sum(sort(colSums(is.na(hospital)), decreasing = TRUE))
 ```
  
  As we see above, there are no missing values.
-
-### Data Exploration
+ 
 ```{r}
 staff_shortage <- c(1:7)
 inpatient_bed <- c(1, 10:15)
@@ -46,9 +45,9 @@ icu_bed_df <- hospital[,icu_bed]
 hospital[,60][1]
 ```
 
-Day of recording all this information
+All data in this folder is recorded for the date above.
 
-Beds used for covid
+### Beds use for covid
 ```{r}
 total_bed <- hospital$inpatient_beds
 
@@ -63,79 +62,67 @@ bed_usage_tidy <- bed_usage %>%
 
 bed_usage_tidy %>%
   ggplot(aes(fill = bedtype, x=fct_rev(state), y=count)) +
-  geom_bar(stat='identity', position='fill') +
+  geom_bar(stat='identity', position = position_fill(reverse = TRUE)) +
   coord_flip() +
   ylab("proportion") + 
   xlab("State") +
-  scale_fill_discrete(guide=guide_legend(reverse=T)) +
   theme(legend.position = "bottom") +
-  ggtitle("Bed Usage by State")
+  ggtitle("Inpatient Bed Usage by State")
 
 ```
-```{r}
-bed_usage_tidy
-
-```
-
+Through this visualization, we see that the majority of beds occupied for all states are not covid related. As of November 26, there are more empty beds than beds occupied by covid patients. However, that difference is not very large in many states that may have less beds overall. To build on this intuition, we will explore the hospital's own expressions about having a critical staffing shortage.
 
 ```{r}
-staff_short_prop <- hospital$critical_staffing_shortage_today_yes / (hospital$critical_staffing_shortage_today_yes+hospital$critical_staffing_shortage_today_no+hospital$critical_staffing_shortage_today_not_reported)
+#percent of hospitals that express critical staffing shortage for this day
+staff_short_prop <- hospital$critical_staffing_shortage_today_yes / (hospital$critical_staffing_shortage_today_yes+hospital$critical_staffing_shortage_today_no)
+staff_short_df <- data.frame(hospital$state, staff_short_prop)
 
+ggplot(staff_short_df, aes(x=staff_short_prop)) + 
+  geom_histogram(bins=12) +
+  ggtitle("% Hospitals in State with Critical Staffing Shortage") +
+  xlab("% of Hospitals in State")
 ```
-
-
+From this histogram, we see that most states have over 10% of their hospitals reporting critical staffing shortage as of November 26. 
 
 # County Policy
 ```{r}
-county <- read.csv("Downloads/state_policy_updates_20201202_0721.csv")
+county <- read.csv("../data/state_policy_updates_20201202_0721.csv")
 county$policy_type <- county$policy_type
 head(county)
 ```
+
 ### Missing Values
 ```{r}
 sort(colSums(is.na(county)), decreasing = TRUE)
-```
-```{r}
-
 x <- missing_data.frame(county)
 image(x)
 ```
 
-We observe that state wide policy levels will have no values in county.
-How should we consider those values into our chart?
+We observe many policies do not include total phases. Understandably, state wide policy levels will have no values in county and zip code. From this observation, we will look at out data from both state and county point of view.
 
 ```{r}
 unique(county$policy_type)
 ```
 
 ```{r}
-county$policy_type <- as.factor(county$policy_type)
-```
-
-
-```{r}
 library(tidyverse)
-ggplot(county, aes(fct_rev(fct_infreq(policy_type)))) + 
+county$policy_type <- as.factor(county$policy_type)
+ggplot(county[county$start_stop=='start',], aes(fct_rev(fct_infreq(policy_type)))) + 
   geom_bar() +
   coord_flip() +
-  ggtitle("Frequency of Different Policy Types by county") +
+  ggtitle("County Frequency of Policy Types") +
   xlab("Policy Types")
 ```
+From our data, there are 64 different policies. However this bar chart shows that around half of the policies are only enacted in a few counties. Policies such as "Shelter in Place", "Food and Drink", "Outdoor Recreation" is very common.
 
 ### State
+
 ```{r}
 state <- county[county$policy_level == "state",]
-state
-```
-```{r}
 ggplot(state[state$start_stop=='start',], aes(fct_rev(fct_infreq(policy_type)))) + 
   geom_bar() +
   coord_flip() +
-  ggtitle("Start Policy Types by State") +
+  ggtitle("State Frequency of Policy Types") +
   xlab("Policy Types")
 ```
-```{r}
-CA <- state[state$state_id == 'NY',]
-CA
-```
-which state got affected the most
+When we look at only States, there is a slight change in the distribution. Entertainment is the most commonly enacted policy. Food and Drink as well as Non-Essential Business is still very common. We see that some of these policies are enforced by most states.
