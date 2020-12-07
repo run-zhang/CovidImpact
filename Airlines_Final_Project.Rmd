@@ -16,7 +16,7 @@ library(tidyverse)
 
 Data Transformation 
 ```{r}
-data <- read_excel("./data/scheduled-canceled-operated-flights-jan2019-jul2020.xlsx")
+data <- read_excel("../data/scheduled-canceled-operated-flights-jan2019-jul2020.xlsx")
 
 year <- c(2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019,
           2019, 2019, 2020, 2020, 2020, 2020, 2020, 2020, 2020)
