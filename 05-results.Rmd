@@ -85,9 +85,6 @@ fig1
 
 
 
-## Covid Time serires
-
-
 
 ### Covid19 Cases in Time Series
 ```{r}
@@ -112,8 +109,8 @@ ggplot(us_cases1,aes(date,new_cases)) +
   geom_smooth(method = "loess", se = FALSE,span=0.2, lwd = 0.8) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b")+
   theme_light()+
-  ylab("daily increase")
-  ggtitle("Daily New Covid19 Cases in the US")
+  ylab("daily new cases")+
+  ggtitle("Daily New Covid19 Cases in the US") 
 ```
 
 ## Hospital 
