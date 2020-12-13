@@ -26,9 +26,9 @@ results
 covid-cases
 covid-maps
 covid19-cases-in-time-series
+county
 hospital
 covid-impact-on-airlines
 covid-impact-on-restaurants
 interactive-component
 conclusion
-county
