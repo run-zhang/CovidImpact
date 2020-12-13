@@ -1,6 +1,10 @@
 # Missing values
 
 Describe any patterns you discover in missing values.
+```{r}
+library(mi)
+```
+
 
 ## Country Policy Orders: 
 ```{r}
