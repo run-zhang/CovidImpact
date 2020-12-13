@@ -24,7 +24,49 @@ There are a few missing values county, zip_code (fips_cod), and total phases. Th
 There are some 0 values that may be missing values in our dataset.
 
 ## Airlines Covid Data: 
-There are no values missing in our dataset. The only "missing values" we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary. 
+There are no values missing in our dataset. The only "missing values" we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary.
+
+```{r}
+library("readxl")
+library(ggplot2)
+library(tidyverse)
+library(mi)
+
+data <- read_excel("./data/scheduled-canceled-operated-flights-jan2019-jul2020.xlsx")
+
+year <- c(2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019,
+          2019, 2019, 2020, 2020, 2020, 2020, 2020, 2020, 2020)
+my_data <- data.frame(year)
+
+for (val in 2:length(data)){
+  array <- data[val][[1]]
+  array <- array[5:23]
+  my_data <- cbind(my_data, array)
+}
+
+#rename the columns 
+names <- c("year", "month", "Tot_Flights", "Alaska",
+           "Allegiant", "American", "Delta", "Frontier", "Hawaiian", 
+           "JetBlue", "Southwest", "Spirit", "United")
+names(my_data) <- names 
+
+#convert to numeric 
+my_data$Tot_Flights <- as.numeric(my_data$Tot_Flights)
+my_data$Alaska <- as.numeric(my_data$Alaska)
+my_data$Allegiant <- as.numeric(my_data$Allegiant)
+my_data$American <- as.numeric(my_data$American)
+my_data$Delta <- as.numeric(my_data$Delta)
+my_data$Frontier <- as.numeric(my_data$Frontier)
+my_data$Hawaiian <- as.numeric(my_data$Hawaiian)
+my_data$JetBlue <- as.numeric(my_data$JetBlue)
+my_data$Southwest <- as.numeric(my_data$Southwest)
+my_data$Spirit <- as.numeric(my_data$Spirit)
+my_data$United <- as.numeric(my_data$United)
+
+x <- missing_data.frame(my_data)
+image(x)
+```
+As seen from this missing data dataframe, there is no dark squares representing no missing data for this dataset. 
 
 ## Restaurant data: 
 There are many missing values in the dataset before May 2020. We also need to extract data for US.
