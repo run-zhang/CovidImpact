@@ -3,7 +3,18 @@
 Describe any patterns you discover in missing values.
 
 ## Country Policy Orders: 
-There are a few missing values county, zip_code, and total phases. This is because some states do not have details about counties. Hence there is no zip code and country details. In addition, most instances do not have total phases.
+```{r}
+county <- read.csv("./data/state_policy_updates_20201202_0721.csv")
+county$policy_type <- county$policy_type
+head(county)
+```
+
+```{r}
+sort(colSums(is.na(county)), decreasing = TRUE)
+x <- missing_data.frame(county)
+image(x)
+```
+There are a few missing values county, zip_code (fips_cod), and total phases. The missing county and zip code values are because if the policy is state wide, there is no entry in zip code or county. Hence there is no zip code and country details. In addition, most instances do not have total phases so there are many missing values there. Based on these observations, we will look at policy order dataset in both the county and state point of view.
 
 ## Hospitalization: 
 There are some 0 values that may be missing values in our dataset.

@@ -10,6 +10,7 @@ library(USAboundaries)
 library(plotly)
 library(readxl)
 library(ggpubr)
+library(forcats)
 ```
 
 ## Covid Cases
@@ -115,7 +116,85 @@ ggplot(us_cases1,aes(date,new_cases)) +
   ggtitle("Daily New Covid19 Cases in the US") 
 ```
 
-## Hospital 
+## County
+```{r}
+county_policy <- county[county$policy_level=='county' & county$start_stop=='start',]
+county_policy$policy_type <- as.factor(county_policy$policy_type)
+ggplot(county_policy, aes(fct_rev(fct_infreq(policy_type)))) + 
+  geom_bar() +
+  coord_flip() +
+  ggtitle("County Frequency of Policy Types") +
+  xlab("Policy Types")
+```
+We see that over 400 counties have enacted Shelter in Place policies. Other regulations such as food and drink, mask requirement are also very common. There are only 23 different policies across all the counties. On the other hand, there were 59 different policies across the 50 states with may only enacted by 1 state. This is also due to inconsistency in the naming of these policies across states.
+```{r}
+state <- county[county$policy_level == "state",]
+ggplot(state[state$start_stop=='start',], aes(fct_rev(fct_infreq(policy_type)))) + 
+  geom_bar() +
+  coord_flip() +
+  ggtitle("State Frequency of Policy Types") +
+  xlab("Policy Types")
+```
+Some policies, however, have almost states enacting it. For example, regulations on entertainment, food and drink, and non-essential businesses.
+
+## Hospital
+All hospital data is from November 26, 2020.
+```{r}
+hospital <- read.csv("./data/reported_hospital_utilization_20201130_2136.csv")
+staff_shortage <- c(1:7)
+inpatient_bed <- c(1, 10:15)
+prev_day <- c(1, 16:23)
+staffed <- c(1, 24:29)
+total <- c(1, 30:39)
+inpatient_bed <- c(1, 40:51)
+icu_bed <- c(1, 52:59)
+staff_shortage_df <- hospital[,staff_shortage]
+inpatient_bed_df <- hospital[,inpatient_bed]
+prev_day_df <- hospital[,prev_day]
+total_df <- hospital[,total]
+inpatient_bed_df <- hospital[,inpatient_bed]
+icu_bed_df <- hospital[,icu_bed]
+```
+We want to analyze the bed usage in hospitals through visualizations below.
+```{r}
+total_bed <- hospital$inpatient_beds
+
+covid_bed <- hospital$inpatient_beds_used_covid
+not_covid_bed <- hospital$inpatient_beds_used - covid_bed
+empty_bed <- total_bed - hospital$inpatient_beds_used
+state <- as.factor(hospital$state)
+
+bed_usage <- data.frame(state, covid_bed, not_covid_bed, empty_bed)
+bed_usage_tidy <- bed_usage %>% 
+  mutate(covid_bed_perc = covid_bed/(covid_bed+not_covid_bed+empty_bed)) %>% 
+  pivot_longer(cols = !c(state,covid_bed_perc), names_to = "bedtype", values_to = "count") %>% 
+  mutate(state = fct_reorder(state, desc(-covid_bed_perc))) %>% 
+  mutate(bedtype = factor(bedtype, level = c("covid_bed","empty_bed","not_covid_bed")))
+
+  ggplot(bed_usage_tidy,aes(x = state , y = count, fill = (bedtype))) + 
+    geom_bar(,stat = "identity", position = position_fill(reverse = TRUE)) + 
+    scale_y_continuous(labels = scales::percent_format()) +
+    labs(x = 'state') +
+    coord_flip() +
+    ylab("proportion") + 
+    xlab("State") +
+    theme(legend.position = "bottom") +
+    ggtitle("Inpatient Bed Usage by State")
+```
+Through this chart, we see that the majority of beds occupied for all states are not covid related. States such as North and South Dakota have over 20% of their bed usage on covid-19 patients. As of November 26, there are more empty beds than beds occupied by covid patients. However, that difference is not very large in many states that may have less beds overall. To build on this intuition, we will explore the hospital's own expressions about having a critical staffing shortage.
+```{r}
+staff_short_prop <- hospital$critical_staffing_shortage_today_yes / (hospital$critical_staffing_shortage_today_yes+hospital$critical_staffing_shortage_today_no)
+staff_short_df <- data.frame(hospital$state, staff_short_prop)
+
+ggplot(staff_short_df, aes(x=staff_short_prop)) + 
+  geom_histogram(binwidth=0.05, center=0.025, closed='left') +
+  scale_y_continuous(breaks=c(0, 2, 4, 6, 8, 10)) +
+  #scale_x_continuous(breaks=c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6)) +
+  ggtitle("Number of States with x% Hospitals with Critical Staffing Shortage") +
+  xlab("% of Hospitals with Critical Staffing Shortage") +
+  ylab("Number of States")
+```
+This histogram demonstrates the percentage of hospitals within a State that reported critical staffing shortages in regards to open bed space. We see that many states have more than 20% of their hospitals reporting critical staffing shortage as of November 26. This provides further insight in our previous chart because even though there seemingly are many empty beds left, hospitals themselves have reported critical shortages.
 
 ## Covid Impact on Airlines: 
 Data Transformation 
