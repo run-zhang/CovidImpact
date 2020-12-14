@@ -24,7 +24,7 @@
 <meta name="author" content="Run Zhang, Miranda Zhou, Mohan Duan, Neha Pusarla" />
 
 
-<meta name="date" content="2020-12-12" />
+<meta name="date" content="2020-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,6 +58,8 @@
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/parallel-coordinates-2.1.8/parcoords.css" rel="stylesheet" />
+<script src="libs/parcoords-binding-1.0.0/parcoords.js"></script>
 
 
 
@@ -174,7 +176,7 @@
 ## 6           NA</code></pre>
 <pre><code>## total_phases    fips_code     state_id       county policy_level         date  policy_type   start_stop     comments       source 
 ##         2858         1659            0            0            0            0            0            0            0            0</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<p><img src="finalproj_files/figure-html/unnamed-chunk-92-1.png" width="672" />
 There are a few missing values county, zip_code (fips_cod), and total phases. The missing county and zip code values are because if the policy is state wide, there is no entry in zip code or county. Hence there is no zip code and country details. In addition, most instances do not have total phases so there are many missing values there. Based on these observations, we will look at policy order dataset in both the county and state point of view.</p>
 </div>
 <div id="hospitalization" class="section level2">
@@ -184,6 +186,8 @@ There are a few missing values county, zip_code (fips_cod), and total phases. Th
 <div id="airlines-covid-data-1" class="section level2">
 <h2><span class="header-section-number">4.3</span> Airlines Covid Data:</h2>
 <p>There are no values missing in our dataset. The only “missing values” we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-93-1.png" width="672" />
+As seen from this missing data dataframe, there is no dark squares representing no missing data for this dataset.</p>
 </div>
 <div id="restaurant-data-2" class="section level2">
 <h2><span class="header-section-number">4.4</span> Restaurant data:</h2>
