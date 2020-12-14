@@ -86,7 +86,21 @@ fig1 <- fig1 %>% layout(
 fig1
 ```
 
+```{r}
 
+
+library(parcoords)
+df_ppc_case <- df_total_cases 
+rownames(df_ppc_case) <- df_ppc_case$state 
+df_ppc_case <- df_ppc_case%>% 
+  select('cases','case_ppl') %>% 
+  rename(cases_per_capita = case_ppl)
+
+parcoords(df_ppc_case,
+          reorderable = T,
+          brushMode = '1D-axes')
+
+```
 
 
 ### Covid19 Cases in Time Series
@@ -111,9 +125,10 @@ ggplot(us_cases1,aes(date,new_cases)) +
   geom_line(color="#69b3a2") + 
   geom_smooth(method = "loess", se = FALSE,span=0.2, lwd = 0.8) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b")+
-  theme_light()+
+  theme_light(16)+
   ylab("daily new cases")+
-  ggtitle("Daily New Covid19 Cases in the US") 
+  ggtitle("Daily New Covid19 Cases in the US")
+
 ```
 
 ## County

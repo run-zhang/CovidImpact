@@ -141,9 +141,39 @@ ggplot(us_cases1,aes(date,new_cases)) +
 
 ```{r}
 
+
+library(parcoords)
+df_ppc_case <- df_total_cases 
+rownames(df_ppc_case) <- df_ppc_case$state 
+df_ppc_case <- df_ppc_case%>% 
+  select('cases','case_ppl') %>% 
+  rename(cases_per_capita = case_ppl)
+
+parcoords(df_ppc_case,
+          reorderable = T,
+          brushMode = '1D-axes')
+
+```
+
+```{r}
+df <- df_total_cases %>% 
+  mutate(case_ppl_order = rank(-case_ppl)) %>% 
+  mutate(sever_level = cut(case_ppl_order, 
+                   breaks=c(0, 10, 20, 51), 
+                   labels=c(3,2,1))) %>% 
+  select("state","cases","case_ppl","sever_level")
 ```
 
 
+
+```{r}
+library(ggplot2)
+library(GGally)
+#set the value of alpha to 0.5
+ggparcoord(df, columns=c(2:3), groupColumn = 4, alphaLines = .9, title = "Cases v.s. Cases Per Capita",scale = "uniminmax") +
+   scale_color_manual(values=c("maroon","gray14","gray")) +
+  theme_grey(16)
+```
 
 
 
