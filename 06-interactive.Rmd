@@ -32,12 +32,7 @@ var data2019 = [
    {month: 4, tot_flight: 652533}, 
    {month: 5, tot_flight: 680165}, 
    {month: 6, tot_flight: 679802}, 
-   {month: 7, tot_flight: 702876},
-   {month: 8, tot_flight: 704553},
-   {month: 9, tot_flight: 649667},
-   {month: 10, tot_flight: 686811},
-   {month: 11, tot_flight: 649511},
-   {month: 12, tot_flight: 672765}
+   {month: 7, tot_flight: 702876}
 ];
 
 var data2020 = [
@@ -80,7 +75,7 @@ svg.append("text")
 
 function change(data){
 
-  xScale.domain(d3.range(1, data2019.length+1));
+  xScale.domain(d3.range(1, data.length+1));
   svg.selectAll(".myXaxis").transition()
     .duration(3000)
     .call(xAxis);
@@ -113,3 +108,5 @@ function change(data){
 change(data2019);
   
 </script>
+
+<paragraph>From this graph, we can clearly see a big drop in flights from March to April of 2020. One can assume from this drop that the pandemic most likely played a role in the decrease of flights. Around May, the number of flights slowly start to increase, but not to the level that it was at the beginning of the year, as can be seen by the comparison to the flights taken in May of 2019. Even though flight frequency increased, it is still not even half as close to the regular frequency of flights.</paragraph> 

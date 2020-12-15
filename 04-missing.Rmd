@@ -6,7 +6,7 @@ library(mi)
 ```
 
 
-## Country Policy Orders: 
+## Country Policy Orders
 ```{r}
 county <- read.csv("./data/state_policy_updates_20201202_0721.csv")
 county$policy_type <- county$policy_type
@@ -19,10 +19,10 @@ image(x)
 ```
 There are a few missing values county, zip_code (fips_cod), and total phases. The missing county and zip code values are because if the policy is state wide, there is no entry in zip code or county. Hence there is no zip code and country details. In addition, most instances do not have total phases so there are many missing values there. Based on these observations, we will look at policy order dataset in both the county and state point of view.
 
-## Hospitalization: 
+## Hospitalization
 There are some 0 values that may be missing values in our dataset.
 
-## Airlines Covid Data: 
+## Airlines Covid Data
 There are no values missing in our dataset. The only "missing values" we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary.
 
 ```{r}
@@ -65,8 +65,9 @@ my_data$United <- as.numeric(my_data$United)
 x <- missing_data.frame(my_data)
 image(x)
 ```
+
 As seen from this missing data dataframe, there is no dark squares representing no missing data for this dataset. 
 
-## Restaurant data: 
+## Restaurant data
 There are many missing values in the dataset before May 2020. We also need to extract data for US.
 

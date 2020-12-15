@@ -87,8 +87,8 @@ reporting_cutoff_start: Look back date start - The latest reports from each hosp
 *Issues with data*: According to the data source no statistical analysis is applied to account for non-response and/or to account for missing data. Otherwise, we do not see major issues.
  
  
-## Restaurant data :
-*Data source* 
+## Restaurant data 
+*Data source*:
 https://www.opentable.com/state-of-industry
 
 ### Description 
@@ -97,7 +97,7 @@ First, the overall impact of Covid 19 on the industry by showing year-over-year 
 Second, a comparison of year-over-year seated covers to demonstrate where we are seeing recovery start to take shape. This table shows year-over-year seated covers across all channels at only the restaurants that have chosen to reopen in a given market. As an example, if there were 50 seated covers in restaurants that have recently reopened in a given locale on May 11, 2019 and on the same day in 2020 there was 1, then 2% will be displayed. For this chart, only markets with 500+ restaurants on OpenTable of which 10%+ are accepting online reservations are included.
  
 ## Airlines Data 
-*Data source* 
+*Data source*:
 https://www.bts.gov/data-spotlight/airlines-july-operations
 
 ### Description 
@@ -105,9 +105,9 @@ This airlines data is from the Bureau of Transportation Statistics. The BTS is p
 
 ### Basic Information about Dataset: 
  
-year(int) - year of flight
-month(string) - month of flight  
-Total Domestic Flights Operated(int) - total number of flights operated that month/year 
-airline(string) - airline brand 
+year(int) - year of flight <br>
+month(string) - month of flight <br>
+Total Domestic Flights Operated(int) - total number of flights operated that month/year <br>
+airline(string) - airline brand <br> 
  
 Issues about dataset: Since there is limited information in this dataset, we will have to manipulate some variables using the information we have to analyze the data further and make stronger conclusions. Additional variables will include numerical variables such as the percent change in number of flights from each month in 2019 and 2020.  
