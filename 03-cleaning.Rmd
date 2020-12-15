@@ -3,15 +3,50 @@
 Describe the process of getting the data into a form in which you could work with it in R. If your code does not lend itself to being including in the .Rmd file, provide a link to the folder or file(s) that contain(s) that code.
 Write a draft of the [Data Transformation chapter](https://edav.info/project#report-format)
 
-## Country Policy Orders: 
+## Country Policy Orders
 This dataset comes in a csv format, which can be read in using R commands.
 
-## Hospitalization Data:
+## Hospitalization Data
 This dataset comes in a csv format, which can be read in using R commands.
 
-## Airlines Covid Data:
-This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since there are some extra spaces in the excel sheet, we remade the table into a form that had no blank spaces, and thus easily callable by column name, which is a dataframe in R. Combining all the columns together into a dataframe, we then renamed the columns such that it would be representative of the information in the column. Lastly, since all the data was in character format, we converted all the columns that had numeric data to a numeric form, such that it can be easily used to create graphs and other visual structures to aid us in our exploratory analysis. Our final product of the downloaded data was a dataframe in R, which had columns that were clearly represented by their names, no missing slots or data, and all the data was the right type of class to work with. 
+## Airlines Covid Data
+This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since there are some extra spaces in the excel sheet, we remade the table into a form that had no blank spaces, and thus easily callable by column name, which is a dataframe in R. Combining all the columns together into a dataframe, we then renamed the columns such that it would be representative of the information in the column. Lastly, since all the data was in character format, we converted all the columns that had numeric data to a numeric form, such that it can be easily used to create graphs and other visual structures to aid us in our exploratory analysis. Our final product of the downloaded data was a dataframe in R, which had columns that were clearly represented by their names, no missing slots or data, and all the data was the right type of class to work with. The top 5 rows of how the dataframe is structured can be seen below. This will be used for different types of analyses on the impact of covid on the airline/travel industry. 
 
-## Restaurant data :
+```{r}
+data <- read_excel("./data/scheduled-canceled-operated-flights-jan2019-jul2020.xlsx")
+
+year <- c(2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019,
+          2019, 2019, 2020, 2020, 2020, 2020, 2020, 2020, 2020)
+my_data <- data.frame(year)
+
+for (val in 2:length(data)){
+  array <- data[val][[1]]
+  array <- array[5:23]
+  my_data <- cbind(my_data, array)
+}
+
+#rename the columns 
+names <- c("year", "month", "Tot_Flights", "Alaska",
+           "Allegiant", "American", "Delta", "Frontier", "Hawaiian", 
+           "JetBlue", "Southwest", "Spirit", "United")
+names(my_data) <- names 
+
+#convert to numeric 
+my_data$Tot_Flights <- as.numeric(my_data$Tot_Flights)
+my_data$Alaska <- as.numeric(my_data$Alaska)
+my_data$Allegiant <- as.numeric(my_data$Allegiant)
+my_data$American <- as.numeric(my_data$American)
+my_data$Delta <- as.numeric(my_data$Delta)
+my_data$Frontier <- as.numeric(my_data$Frontier)
+my_data$Hawaiian <- as.numeric(my_data$Hawaiian)
+my_data$JetBlue <- as.numeric(my_data$JetBlue)
+my_data$Southwest <- as.numeric(my_data$Southwest)
+my_data$Spirit <- as.numeric(my_data$Spirit)
+my_data$United <- as.numeric(my_data$United)
+
+head(my_data)
+```
+
+## Restaurant data
 This dataset comes in a csv format, which can be read in using R commands. This data contains information for other countries, we need to select US cities.
  
