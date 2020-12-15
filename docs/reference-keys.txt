@@ -29,6 +29,7 @@ covid19-cases-in-time-series
 county
 hospital
 covid-impact-on-airlines
+final-findings-on-airline-data
 covid-impact-on-restaurants
 interactive-component
 conclusion
