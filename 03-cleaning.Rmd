@@ -2,12 +2,46 @@
 
 Describe the process of getting the data into a form in which you could work with it in R. If your code does not lend itself to being including in the .Rmd file, provide a link to the folder or file(s) that contain(s) that code.
 Write a draft of the [Data Transformation chapter](https://edav.info/project#report-format)
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
 
 ## Country Policy Orders: 
-This dataset comes in a csv format, which can be read in using R commands.
+This dataset comes in a csv format, which can be read in using "read.csv()". As described earlier, each row in this dataset is either a start or end of a policy. There is also information on both county and states. For our analysis, we will look at county and states separately. In addition, when we aggregate the number of states that enacted certain policies, we will only look at values where "start_stop" is "start" so we do not count double.
+
+County Policies:
+```{r}
+county <- read.csv("./data/state_policy_updates_20201202_0721.csv")
+county_policy <- county[county$policy_level=='county' & county$start_stop=='start',]
+head(county_policy)
+```
+
+State:
+```{r}
+state_policy <- county[county$policy_level == "state" & county$start_stop=='start',]
+head(state_policy)
+```
 
 ## Hospitalization Data:
-This dataset comes in a csv format, which can be read in using R commands.
+This dataset comes in a csv format, which can be read in using "read.csv()". As seen in the dataset description, there are many different columns with a variety of different values. We are only concentrating on a few of these values in our analysis so we split the dataframe up. We will analyze inpatient bed use which is column index 40 to 51.
+```{r}
+hospital <- read.csv("./data/reported_hospital_utilization_20201130_2136.csv")
+inpatient_bed <- c(1, 40:51)
+inpatient_bed_df <- hospital[,inpatient_bed]
+inpatient_bed_df
+```
+We then calculate the proportion of beds used by covid patients, non-covid patients, and empty beds. To do this, we extract total bed "inpatient bed", covid bed "inpatient_beds_used_covid", non-covid bed "inpatient_beds_used - covid_bed", and empty bed "total bed - inpatient_beds_used". 
+
+We also analyze staffing shortages in a similar fashion. Staff information is columns 1-7.
+```{r}
+staff_shortage <- c(1:7)
+staff_shortage_df <- hospital[,staff_shortage]
+head(staff_shortage_df)
+```
+
+We then calculate the proportion by diving those that reported "critical staffing shortage today yes" over the sum of both yes and no.
 
 ## Airlines Covid Data:
 This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since there are some extra spaces in the excel sheet, we remade the table into a form that had no blank spaces, and thus easily callable by column name, which is a dataframe in R. Combining all the columns together into a dataframe, we then renamed the columns such that it would be representative of the information in the column. Lastly, since all the data was in character format, we converted all the columns that had numeric data to a numeric form, such that it can be easily used to create graphs and other visual structures to aid us in our exploratory analysis. Our final product of the downloaded data was a dataframe in R, which had columns that were clearly represented by their names, no missing slots or data, and all the data was the right type of class to work with. 
