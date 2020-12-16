@@ -17,14 +17,14 @@ The original YoY_Seated_Diner_Data-2.csv file contains information about 8 count
 There are many NA's but we decide to subset the data we need and then deal with NA's
 
 ```{r}
-us_case = read.csv("./data/us-states.csv")
-restaurant = read.csv("./data/YoY_Seated_Diner_Data-2.csv")
+us_case = read.csv("../data/us-states.csv")
+restaurant = read.csv("../data/YoY_Seated_Diner_Data-2.csv")
 restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
                            names_to = "Date",
                            values_to = "Percentage")%>%
                mutate(Date = paste0("2020.",str_remove(Date,"X")))%>%
                mutate(Date = as.Date(chartr(old = ".", new = "-", Date)))
-reopen = read.csv("./data/YoY_Reopened_Seated_Diner_Data.csv")
+reopen = read.csv("../data/YoY_Reopened_Seated_Diner_Data.csv")
 reopen1 = reopen %>% pivot_longer(cols = starts_with("X"),
                            names_to = "Date",
                            values_to = "Percentage")%>%
@@ -55,16 +55,27 @@ reopen_state = reopen_state[reopen_state$Name %in% us_states,]
 ```{r}
 sum(is.na(restaurant_state))
 ```
+```{r}
+library(janitor)
+reopen_na = reopen[reopen$Type == 'state',]
+reopen_na = reopen_na[reopen_na$Name %in% us_states,][,-1]
+reopen_na = as.data.frame(t(reopen_na))%>%
+  row_to_names(row_number=1)
+x<- missing_data.frame(reopen_na,favor_positive = TRUE, favor_ordered = T)
+image(x,title = "Missing Data of Reopen Dataset")
+```
 
 By observing reopen dataset, we notice that each state contain consecutive missing values in the started from the beginning of April. And the first non-NA value started when this stated reopen for in-door dinning. Hence, states have more NA's reopen later, and may be more conservative for allowing reopenning.
 From the number of NA, we can already know Texas, Florida reopen early for in-door dinning, New Jersey and New York reopen later for in-door dining
+
+
 ```{r}
-reopen_na <- reopen_state %>%
+reopen_na2 <- reopen_state %>%
   group_by(Name) %>%
   summarize(count_na = sum(is.na(Percentage))) %>%
   arrange(count_na)
-reopen_na$Name = factor(reopen_na$Name,levels = reopen_na$Name)
-ggplot(reopen_na)+
+reopen_na2$Name = factor(reopen_na2$Name,levels = reopen_na2$Name)
+ggplot(reopen_na2)+
   geom_col(aes(x = Name,y = count_na))+
   ggtitle("Missing Value count plot")
 ```
@@ -79,7 +90,7 @@ ggplot(US.nation.res) +
   ggtitle("Year-over-year Comparison of seated dinner in the US")
 ```
 ```{r}
-US_case = read.csv("./data/us-states.csv")
+US_case = read.csv("../data/us-states.csv")
 US_case_by_date = US_case %>%
   mutate(date = as.Date(date))%>%
   group_by(date) %>%
@@ -91,6 +102,7 @@ US_case_by_date
 ```{r}
 p1 <- ggplot() +
   geom_line(data = US.nation.res,aes(x=Date, y=Percentage),color="#69b3a2") + 
+  geom_smooth(method ="loess", se = FALSE,span=0.2, lwd =1.5)+
   geom_hline(yintercept=0, color="orange", size=.5)+ 
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
@@ -111,9 +123,11 @@ Hawaii's restaurant industry was hit hardest and just had a slight recovery afte
 ```{r}
 p2<- ggplot() +
   geom_line(data = US_case_by_date,aes(x=date, y=daily_new),color="orange") + 
+  geom_smooth(method ="loess", se = FALSE,span=0.2, lwd =0.8)+
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
   ggtitle("Daily COVID case in US")
+p2
 ```
 ```{r}
 ggarrange(p1,p2,nrow=2)

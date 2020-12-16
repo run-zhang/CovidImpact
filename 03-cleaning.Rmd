@@ -86,5 +86,50 @@ head(my_data)
 ```
 
 ## Restaurant data
-This dataset comes in a csv format, which can be read in using R commands. This data contains information for other countries, we need to select US cities.
- 
+Two datasets come in a csv format, which can be read in using R commands. 
+```{r}
+restaurant = read.csv("./data/YoY_Seated_Diner_Data-2.csv")
+restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
+                           names_to = "Date",
+                           values_to = "Percentage")%>%
+               mutate(Date = paste0("2020.",str_remove(Date,"X")))%>%
+               mutate(Date = as.Date(chartr(old = ".", new = "-", Date)))
+reopen = read.csv("./data/YoY_Reopened_Seated_Diner_Data.csv")
+reopen1 = reopen %>% pivot_longer(cols = starts_with("X"),
+                           names_to = "Date",
+                           values_to = "Percentage")%>%
+               mutate(Date = paste0("2020.",str_remove(Date,"X")))%>%
+               mutate(Date = as.Date(chartr(old = ".", new = "-", Date)))
+```
+The original YoY_Seated_Diner_Data-2.csv file contains information about 8 country of 60 state and 60 cities, and the reopen dataset contains 8 countries and 9 states, including 8 US states. Here we only extract US state and nationwide information.
+
+```{r}
+us_states = c('Alabama','Arizona','California','Colorado', 'Connecticut',
+       'District of Columbia','Florida', 'Georgia', 'Hawaii', 'Illinois',
+       'Indiana', 'Kansas', 'Kentucky', 'Louisiana',
+       'Maryland', 'Massachusetts', 'Michigan',
+       'Minnesota', 'Missouri', 'Nebraska', 'Nevada', 'New Jersey',
+       'New Mexico', 'New York', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon',
+       'Pennsylvania','Rhode Island', 'South Carolina', 'Tennessee', 
+       'Texas', 'Utah', 'Virginia', 'Washington', 'Wisconsin')
+
+restaurant_state = restaurant1[restaurant1$Type == 'state',]
+restaurant_state = restaurant_state[restaurant_state$Name %in% us_states,]
+US.nation.res = restaurant1[which(restaurant1$Type=="country" & restaurant1$Name=="United States"), ]
+
+reopen_state = reopen1[reopen1$Type == 'state',]
+reopen_state = reopen_state[reopen_state$Name %in% us_states,]
+```
+
+## US COVID Cases Data
+US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We want to see the daily new cases by substract the cumulative data by the data of previous day.
+```{r}
+us_case = read.csv("./data/us-states.csv")
+US_case_by_date = US_case %>%
+  mutate(date = as.Date(date))%>%
+  group_by(date) %>%
+  summarize(cumu_sum = sum(cases)) %>%
+  mutate(daily_new = cumu_sum-lag(cumu_sum)) %>%
+  drop_na()
+```
+
