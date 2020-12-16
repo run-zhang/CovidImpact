@@ -7,7 +7,9 @@
 https://github.com/nytimes/covid-19-data
 
 ### Description 
-This covid cases data is collected from nytimes GitHub. It tracks cumulative cases for each state in the United States from the first cases happened until the end of Novenmber. 
+This covid cases data is collected from New York Times Official GitHub. It tracks cumulative cases for each state in the United States since late January. Our collected data ends on November 29th. 
+
+We chose this dataset because the New York Times compiled this time series data from state and local governments and health departments in an attempt to provide a complete record of the ongoing outbreak.
 
 
 
