@@ -28,6 +28,7 @@ head(state_policy)
 
 Finally, we created this table by counting all the times each state appears in the previous dataframe to see how many policies each state enacted. This information is fed into our map visualization.
 ```{r}
+state <- county[county$policy_level == "state" & county$start_stop=='start',]
 policy_count <- count(state, state_id)
 policy_count$state_abbr <- policy_count$state_id
 policy_count
