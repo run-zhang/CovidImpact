@@ -541,8 +541,8 @@ p1 <- ggplot() +
 
 ```{r}
 US_case_by_date1 <- US_case_by_date[US_case_by_date$date >= "2020-02-18" & US_case_by_date$date <= "2020-11-22",]
-p2<- ggplot() +
-  geom_line(data = US_case_by_date1,aes(x=date, y=daily_new/1000),color="orange") + 
+p2<- ggplot(data = US_case_by_date1,aes(x=date, y=daily_new/1000)) +
+  geom_line(color="orange") + 
   geom_smooth(method ="loess", se = FALSE,span=0.2, lwd =0.8)+
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
