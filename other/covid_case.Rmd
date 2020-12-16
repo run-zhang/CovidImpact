@@ -99,10 +99,13 @@ fig2
 ```{r}
 df_total_cases %>%
   mutate(state = fct_reorder(state, desc(-cases))) %>%
-  ggplot(aes(x = state, y = cases)) +
+  ggplot(aes(x = state, y = cases/1000)) +
     geom_point(stat = "identity")+
     coord_flip() +
-    ggtitle("Total Confirmed Covid19 Cases for Each State in The U.S.")
+    ggtitle("Total Confirmed Covid19 Cases for Each State in The U.S.")+
+    ylab("Cases(thousand)")+
+    xlab("State")
+
     
 ```
 
@@ -112,29 +115,34 @@ df_total_cases %>%
 #data process, us_cases1 is the overall us cases per day
 us_cases1 <- df_case  %>% 
   count( date,wt = cases,name = "total_cases") %>% 
-  mutate(date = as.Date(us_cases1$date)) %>% 
+  mutate(date = as.Date(df_case$date)) %>% 
   mutate(new_cases = (c(1,diff(total_cases))))
 ```
 
 
 ### Covid19 Cases in Time Series
 ```{r}
-ggplot(us_cases1,aes(x=date,y=total_cases)) +
+ggplot(us_cases1,aes(x=date,y=total_cases/1000000)) +
   geom_line(color="#69b3a2") + 
   scale_x_date(date_breaks = "1 month", date_labels = "%b")+
   theme_light()+
-  ggtitle("Cumulative Covid19 Cases in the US")
+  ggtitle("Cumulative Covid19 Cases in the U.S.")+
+  ylab("Cases(million)") +
+  xlab("Date")+
+  coord_cartesian(ylim = c(0,15)) 
+
 ```
 
 
 
 ```{r}
-ggplot(us_cases1,aes(date,new_cases)) +
+ggplot(us_cases1,aes(date,new_cases/1000)) +
   geom_line(color="#69b3a2") + 
   geom_smooth(method = "loess", se = FALSE,span=0.2, lwd = 0.8) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b")+
+  scale_color_manual(values = colors)+
   theme_light()+
-  ylab("daily increase")
+  ylab("Daily Cases(thousand)")
   ggtitle("Daily New Covid19 Cases in the US")
 ```
 

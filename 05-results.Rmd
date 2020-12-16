@@ -1,5 +1,4 @@
 # Results
-This is results.
 
 ```{r}
 library(tidyverse)
@@ -18,6 +17,8 @@ library(lubridate)
 ```
 
 ## Covid Cases
+More than 14 million people in the U.S. have had confirmed covid-19 infections until the end of November. Tens of thousands of new cases are reported daily nationwide and the covid cases are still surging. Which states are facing the most severe covid outbreak?
+
 ```{r}
 #data process
 # prepare population per states data
@@ -47,7 +48,7 @@ df_total_cases$hover <- with(df_total_cases, paste(state, '<br>', "Covid cases",
                    
 ```   
 
-
+We simply generate a cleveland graph to show total cases for each state in the U.S. and sort it in descending order. It clearly shows that Texas and California have confirmed more than a million covid cases. 
 ```{r}
 df_total_cases %>%
   mutate(state = fct_reorder(state, desc(-cases))) %>%
@@ -552,4 +553,8 @@ ggarrange(p1,p2,nrow=2)
 
 
 From the year-over-year seated dinner rate plot, we can see the seated dinner hugely drop to -100% compared to the same time of last year, means all the seated dinner stopped nationwide by late March. The seated dinner rate started to increase starting from late April to June. After late June, the seated dinner rate became stable and showing an obious weekly pattern. By comparing the seated dinner rate and daily covid trend together, we can see that after states are reopen for seated dinner, the in-door dining rate did not change so much coresponding to change of COVID cases. Especially, after mid October, the daily covid case change hugely but people's willingness of in-door dining does not change so much, which might be dangerous.
+
+
+
+
 
