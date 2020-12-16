@@ -17,6 +17,7 @@ country-policy-orders-1
 hospitalization-data-1
 airlines-covid-data
 restaurant-data-1
+us-covid-cases-data
 missing-values
 country-policy-orders-2
 hospitalization
