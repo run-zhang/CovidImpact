@@ -168,7 +168,7 @@ Some policies, however, have almost states enacting it. For example, regulations
 On the news, we always hear about states such as New York introducing new policies and being proactive with their covid response. Even though this will not be a comprehensive analysis on states' actions, we want to view exactly how proactive states have been in starting policies.
 
 ```{r}
-policy_count <- count(state, state_id)
+policy_count <- state %>% count(state_id)
 policy_count$state_abbr <- policy_count$state_id
 ```
 

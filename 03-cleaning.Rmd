@@ -18,7 +18,6 @@ County Policies:
 ```{r}
 county <- read.csv("./data/state_policy_updates_20201202_0721.csv")
 county_policy <- county[county$policy_level=='county' & county$start_stop=='start',]
-head(county_policy)
 ```
 
 State:
