@@ -3,6 +3,10 @@
 Describe any patterns you discover in missing values.
 ```{r}
 library(mi)
+library(janitor)
+library(tidyr)
+library(dplyr)
+library(stringr)
 ```
 
 
@@ -69,5 +73,21 @@ image(x)
 As seen from this missing data dataframe, there is no dark squares representing no missing data for this dataset. 
 
 ## Restaurant data
-There are many missing values in the dataset before May 2020. We also need to extract data for US.
+```{r}
+restaurant = read.csv("./data/YoY_Seated_Diner_Data-2.csv")
+restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
+                           names_to = "Date",
+                           values_to = "Percentage")%>%
+               mutate(Date = paste0("2020.",str_remove(Date,"X")))%>%
+               mutate(Date = as.Date(chartr(old = ".", new = "-", Date)))
+reopen = read.csv("./data/YoY_Reopened_Seated_Diner_Data.csv")
+
+reopen_na = reopen[reopen$Type == 'state',]
+reopen_na = reopen_na[reopen_na$Name %in% us_states,][,-1]
+reopen_na = as.data.frame(t(reopen_na))%>%
+  row_to_names(row_number=1)
+x<- missing_data.frame(reopen_na,favor_positive = TRUE, favor_ordered = T)
+image(x,title = "Missing Data of Reopen Dataset")
+```
+
 
