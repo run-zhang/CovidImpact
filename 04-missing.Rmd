@@ -7,6 +7,7 @@ library(janitor)
 library(tidyr)
 library(dplyr)
 library(stringr)
+library(ggplot2)
 ```
 
 
@@ -89,5 +90,14 @@ reopen_na = as.data.frame(t(reopen_na))%>%
 x<- missing_data.frame(reopen_na,favor_positive = TRUE, favor_ordered = T)
 image(x,title = "Missing Data of Reopen Dataset")
 ```
-
+```{r}
+reopen_na2 <- reopen_state %>%
+  group_by(Name) %>%
+  summarize(count_na = sum(is.na(Percentage))) %>%
+  arrange(count_na)
+reopen_na2$Name = factor(reopen_na2$Name,levels = reopen_na2$Name)
+ggplot(reopen_na2)+
+  geom_col(aes(x = Name,y = count_na))+
+  ggtitle("Missing Value count plot")
+```
 
