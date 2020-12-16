@@ -1,16 +1,17 @@
 introduction
 data-sources
 covid-cases
-country-policy-orders
 description
+country-policy-orders
+description-1
 basic-information-about-dataset
 hospitalization-data
-description-1
+description-2
 basic-information-on-this-dataset
 restaurant-data
-description-2
-airlines-data
 description-3
+airlines-data
+description-4
 basic-information-about-dataset-1
 data-transformation
 country-policy-orders-1
@@ -34,4 +35,3 @@ final-findings-on-airline-data
 covid-impact-on-restaurants
 interactive-component
 conclusion
-description-4

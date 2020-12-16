@@ -81,20 +81,22 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a><ul>
-<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#covid-cases"><i class="fa fa-check"></i><b>2.1</b> Covid Cases</a></li>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#covid-cases"><i class="fa fa-check"></i><b>2.1</b> Covid Cases</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-sources.html"><a href="data-sources.html#description"><i class="fa fa-check"></i><b>2.1.1</b> Description</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="data-sources.html"><a href="data-sources.html#country-policy-orders"><i class="fa fa-check"></i><b>2.2</b> Country Policy Orders</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="data-sources.html"><a href="data-sources.html#description"><i class="fa fa-check"></i><b>2.2.1</b> Description</a></li>
+<li class="chapter" data-level="2.2.1" data-path="data-sources.html"><a href="data-sources.html#description-1"><i class="fa fa-check"></i><b>2.2.1</b> Description</a></li>
 <li class="chapter" data-level="2.2.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-about-dataset"><i class="fa fa-check"></i><b>2.2.2</b> Basic Information about Dataset:</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="data-sources.html"><a href="data-sources.html#hospitalization-data"><i class="fa fa-check"></i><b>2.3</b> Hospitalization Data</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="data-sources.html"><a href="data-sources.html#description-1"><i class="fa fa-check"></i><b>2.3.1</b> Description</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-sources.html"><a href="data-sources.html#description-2"><i class="fa fa-check"></i><b>2.3.1</b> Description</a></li>
 <li class="chapter" data-level="2.3.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-on-this-dataset"><i class="fa fa-check"></i><b>2.3.2</b> Basic Information on this dataset:</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="data-sources.html"><a href="data-sources.html#restaurant-data"><i class="fa fa-check"></i><b>2.4</b> Restaurant data</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="data-sources.html"><a href="data-sources.html#description-2"><i class="fa fa-check"></i><b>2.4.1</b> Description</a></li>
+<li class="chapter" data-level="2.4.1" data-path="data-sources.html"><a href="data-sources.html#description-3"><i class="fa fa-check"></i><b>2.4.1</b> Description</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="data-sources.html"><a href="data-sources.html#airlines-data"><i class="fa fa-check"></i><b>2.5</b> Airlines Data</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="data-sources.html"><a href="data-sources.html#description-3"><i class="fa fa-check"></i><b>2.5.1</b> Description</a></li>
+<li class="chapter" data-level="2.5.1" data-path="data-sources.html"><a href="data-sources.html#description-4"><i class="fa fa-check"></i><b>2.5.1</b> Description</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-sources.html"><a href="data-sources.html#basic-information-about-dataset-1"><i class="fa fa-check"></i><b>2.5.2</b> Basic Information about Dataset:</a></li>
 </ul></li>
 </ul></li>
@@ -149,7 +151,7 @@
 <h2><span class="header-section-number">4.1</span> Country Policy Orders</h2>
 <pre><code>## total_phases    fips_code     state_id       county policy_level         date  policy_type   start_stop     comments       source 
 ##         2858         1659            0            0            0            0            0            0            0            0</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<p><img src="finalproj_files/figure-html/unnamed-chunk-73-1.png" width="672" />
 There are a few missing values county, zip_code (fips_cod), and total phases. The missing county and zip code values are because if the policy is state wide, there is no entry in zip code or county. Hence there is no zip code and country details. In addition, most instances do not have total phases so there are many missing values there. Based on these observations, we will look at policy order dataset in both the county and state point of view.</p>
 </div>
 <div id="hospitalization" class="section level2">
@@ -159,7 +161,7 @@ There are a few missing values county, zip_code (fips_cod), and total phases. Th
 <div id="airlines-covid-data-1" class="section level2">
 <h2><span class="header-section-number">4.3</span> Airlines Covid Data</h2>
 <p>There are no values missing in our dataset. The only “missing values” we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <p>As seen from this missing data dataframe, there is no dark squares representing no missing data for this dataset.</p>
 </div>
 <div id="restaurant-data-2" class="section level2">
@@ -177,8 +179,8 @@ There are a few missing values county, zip_code (fips_cod), and total phases. Th
 ##  [8,] &quot;New York&quot;      &quot;Pennsylvania&quot;
 ##  [9,] &quot;New York&quot;      &quot;Texas&quot;       
 ## [10,] &quot;Pennsylvania&quot;  &quot;Texas&quot;</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-20-1.png" width="672" />
-<img src="finalproj_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-76-1.png" width="672" />
+<img src="finalproj_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 
 </div>
 </div>

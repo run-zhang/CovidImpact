@@ -111,6 +111,20 @@ parcoords(df_ppc_case,
 
 ```
 
+
+```{r}
+df_total_cases %>%
+  mutate(state = fct_reorder(state, desc(-cases))) %>%
+  ggplot(aes(x = state, y = cases/1000)) +
+    geom_point(stat = "identity")+
+    coord_flip() +
+    ggtitle("Total Confirmed Covid19 Cases for Each State in The U.S.")+
+    ylab("Cases(thousand)")+
+    xlab("State")
+
+    
+```
+
 This parallel coordinates plot is another representation of how each state is being affected by the coronavirus pandemic. From this graph, we can observe that high number of cases in the state does not directly coordinate to high cases per capita, and that most of the states with low covid case numbers actually have more cases per capita. 
 
 
@@ -124,10 +138,12 @@ us_cases1 <- df_case  %>%
 ```
 
 ```{r}
-ggplot(us_cases1,aes(x=date,y=total_cases)) +
+ggplot(us_cases1,aes(x=date,y=total_cases/1000000)) +
   geom_line(color="#69b3a2") + 
   scale_x_date(date_breaks = "1 month", date_labels = "%b")+
-  theme_light()+
+  theme_light(16)+
+  xlab("Date")+
+  ylab("Cases(million)")+
   ggtitle("Cumulative Covid19 Cases in the US")
 ```
 
@@ -135,13 +151,18 @@ This graph shows the cummulative number of covid cases starting from February of
 
 
 ```{r}
-ggplot(us_cases1,aes(date,new_cases)) +
-  geom_line(color="#69b3a2") + 
-  geom_smooth(method = "loess", se = FALSE,span=0.2, lwd = 0.8) +
+ggplot(us_cases1,aes(date,new_cases/1000)) +
+  geom_line(aes(color ="#69b3a2")) + 
+  geom_smooth(method = "loess", se = FALSE,span=0.2, lwd = 0.8, show.legend = TRUE,aes(color = "blue")) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b")+
   theme_light(16)+
-  ylab("daily new cases")+
-  ggtitle("Daily New Covid19 Cases in the US")
+  ylab("Daily New Cases(thousand)")+
+  xlab("Date")+
+  ggtitle("Daily New Covid19 Cases in the U.S.")+
+  scale_color_identity(name = "Line",
+                          breaks = c("#69b3a2", "blue"),
+                          labels = c("Actual Curve", "Estimated Trend"),
+                          guide = "legend")
 
 ```
 

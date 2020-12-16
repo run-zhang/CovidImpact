@@ -2,7 +2,10 @@
 
 
 ## Covid Cases
-*Data Source*: https://github.com/nytimes/covid-19-data
+
+*Data Source*:
+https://github.com/nytimes/covid-19-data
+
 ### Description 
 This covid cases data is collected from nytimes GitHub. It tracks cumulative cases for each state in the United States from the first cases happened until the end of Novenmber. 
 
