@@ -1,6 +1,6 @@
 introduction
 data-sources
-requirement
+covid-cases
 country-policy-orders
 description
 basic-information-about-dataset
@@ -24,7 +24,7 @@ hospitalization
 airlines-covid-data-1
 restaurant-data-2
 results
-covid-cases
+covid-cases-1
 covid-maps
 covid19-cases-in-time-series
 county
@@ -34,3 +34,4 @@ final-findings-on-airline-data
 covid-impact-on-restaurants
 interactive-component
 conclusion
+description-4

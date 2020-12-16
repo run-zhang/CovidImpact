@@ -1,12 +1,13 @@
 # Data sources
 
 
-## Requirement 
-Write a draft of the [Data Sources chapter](https://edav.info/project#report-format). \ 
+## Covid Cases
+*Data Source*: https://github.com/nytimes/covid-19-data
+### Description 
+This covid cases data is collected from nytimes GitHub. It tracks cumulative cases for each state in the United States from the first cases happened until the end of Novenmber. 
 
-Describe the data sources: who is responsible for collecting the data? How is it collected? If there were a choice of options, explain how you chose. \ 
 
-Provide some basic information about the dataset: types of variables, number of records, etc. Describe any issues / problems with the data, either known or that you discover. (suggested: approximately 1 page)
+
 
 ## Country Policy Orders
 *Data Source*: 
