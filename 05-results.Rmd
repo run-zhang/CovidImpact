@@ -179,7 +179,7 @@ On the news, we always hear about states such as New York introducing new polici
 
 
 ```{r}
-policy_count <- count(state, state_id)
+policy_count <- state %>% count(state_id)
 policy_count$state_abbr <- policy_count$state_id
 ```
 
