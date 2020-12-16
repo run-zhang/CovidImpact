@@ -27,6 +27,13 @@ state_policy <- county[county$policy_level == "state" & county$start_stop=='star
 head(state_policy)
 ```
 
+Finally, we created this table by counting all the times each state appears in the previous dataframe to see how many policies each state enacted. This information is fed into our map visualization.
+```{r}
+policy_count <- count(state, state_id)
+policy_count$state_abbr <- policy_count$state_id
+policy_count
+```
+
 ## Hospitalization Data
 This dataset comes in a csv format, which can be read in using "read.csv()". As seen in the dataset description, there are many different columns with a variety of different values. We are only concentrating on a few of these values in our analysis so we split the dataframe up. We will analyze inpatient bed use which is column index 40 to 51.
 ```{r}
