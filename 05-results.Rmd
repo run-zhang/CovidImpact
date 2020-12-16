@@ -470,7 +470,7 @@ reopen_state = reopen_state[reopen_state$Name %in% us_states,]
 ```
 
 ```{r}
-US_case_by_date = US_case %>%
+US_case_by_date = us_case %>%
   mutate(date = as.Date(date))%>%
   group_by(date) %>%
   summarize(cumu_sum = sum(cases)) %>%
