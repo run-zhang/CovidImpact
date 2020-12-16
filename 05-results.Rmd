@@ -180,7 +180,6 @@ On the news, we always hear about states such as New York introducing new polici
 
 ```{r}
 policy_count <- state %>% count(state_id)
-policy_count$state_abbr <- policy_count$state_id
 ```
 
 ```{r}
@@ -195,7 +194,7 @@ gp <- list(
 figp <- plot_geo(policy_count, locationmode = 'USA-states')
 
 fig2p <- figp %>% add_trace(
-    z = ~n, locations = ~state_abbr,
+    z = ~n, locations = ~state_id,
     color = ~n, colors = 'Blues'
   )
 
