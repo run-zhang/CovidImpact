@@ -6,7 +6,9 @@ Write a draft of the [Data Transformation chapter](https://edav.info/project#rep
 library(tidyverse)
 library(ggplot2)
 library(readxl)
-
+library(stringr)
+library(tidyr)
+library(dplyr)
 ```
 
 
@@ -86,7 +88,7 @@ head(my_data)
 ```
 
 ## Restaurant data
-Two datasets come in a csv format, which can be read in using R commands. 
+Two datasets come in a csv format, which can be read in using R commands. Each row contains information of a country or a state and each columns represent different dates. To clean this data we want to change the date columns to one column.
 ```{r}
 restaurant = read.csv("./data/YoY_Seated_Diner_Data-2.csv")
 restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
