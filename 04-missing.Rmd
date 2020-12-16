@@ -74,6 +74,9 @@ image(x)
 As seen from this missing data dataframe, there is no dark squares representing no missing data for this dataset. 
 
 ## Restaurant data
+
+Observing reopen dataset, we notice that each state contain consecutive missing values in the started from the beginning of April. And the first non-NA value started when this stated reopen for in-door dinning. Hence, states have more NA's reopen later, and may be more conservative for allowing reopenning.
+From the number of NA, we can already know Texas, Florida reopen early for in-door dinning, New Jersey and New York reopen later for in-door dining
 ```{r}
 us_states = c('Alabama','Arizona','California','Colorado', 'Connecticut',
        'District of Columbia','Florida', 'Georgia', 'Hawaii', 'Illinois',
