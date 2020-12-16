@@ -17,6 +17,9 @@ library(lubridate)
 ```
 
 ## Covid Cases
+
+### Covid Cases in Each State
+
 More than 14 million people in the U.S. have had confirmed covid-19 infections until the end of November. Tens of thousands of new cases are reported daily nationwide and the covid cases are still surging. Which states are facing the most severe covid outbreak?
 
 ```{r}
@@ -48,7 +51,8 @@ df_total_cases$hover <- with(df_total_cases, paste(state, '<br>', "Covid cases",
                    
 ```   
 
-We simply generate a cleveland graph to show total cases for each state in the U.S. and sort it in descending order. It clearly shows that Texas and California have confirmed more than a million covid cases. 
+
+
 ```{r}
 df_total_cases %>%
   mutate(state = fct_reorder(state, desc(-cases))) %>%
@@ -62,7 +66,10 @@ df_total_cases %>%
     
 ```
 
-### Covid Maps
+
+Firstly, we generated a Cleveland graph to show total cases for each state in the U.S. and sorted it in descending order. It clearly shows that Texas and California have confirmed more than a million covid cases. Does these states with larger numbers of covid cases face a severer Covid pandemic?  
+
+
 
 ```{r}
 # give state boundaries a white border
@@ -118,21 +125,42 @@ In contrast to the first map, the second map now shows the number of positive co
 ```{r}
 
 
-library(parcoords)
-df_ppc_case <- df_total_cases 
-rownames(df_ppc_case) <- df_ppc_case$state 
-df_ppc_case <- df_ppc_case%>% 
-  select('cases','case_ppl') %>% 
-  rename(cases_per_capita = case_ppl)
-
-parcoords(df_ppc_case,
-          reorderable = T,
-          brushMode = '1D-axes')
+# library(parcoords)
+# df_ppc_case <- df_total_cases 
+# rownames(df_ppc_case) <- df_ppc_case$state 
+# df_ppc_case <- df_ppc_case%>% 
+#   select('cases','case_ppl') %>% 
+#   rename(cases_per_capita = case_ppl)
+# 
+# parcoords(df_ppc_case,
+#           reorderable = T,
+#           brushMode = '1D-axes')
 
 ```
 
 
-This parallel coordinates plot is another representation of how each state is being affected by the coronavirus pandemic. From this graph, we can observe that high number of cases in the state does not directly coordinate to high cases per capita, and that most of the states with low covid case numbers actually have more cases per capita. 
+
+```{r}
+
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+
+fig <- plot_ly(
+  df_total_cases, x = ~cases, y = ~case_ppl*100,
+  # Hover text:
+  text = ~paste("State: ", state, '$<br>cases:', cases,'$<br>cases per capita:', case_ppl),
+  color = ~cases, size = ~case_ppl
+)
+x <- list(
+  title = "cases"
+)
+y <- list(
+  title = "cases per 100"
+)
+fig %>% layout(title = 'Scatterplot of Covid Cases vs. Cases Per Capita in Each State', xaxis = x, yaxis = y)
+```
+
+
+This scatter plot is another representation of how each state is being affected by the coronavirus pandemic. From this graph, we can observe that high number of cases in the state does not directly coordinate to high cases per 100, and that some states, like North Dakota and South Dakota, with low covid case numbers actually have more percentage of people get covid infectious.
 
 
 ### Covid19 Cases in Time Series
