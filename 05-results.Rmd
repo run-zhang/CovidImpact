@@ -154,15 +154,52 @@ ggplot(county_policy, aes(fct_rev(fct_infreq(policy_type)))) +
 
 We see that over 400 counties have enacted Shelter in Place policies. Other regulations such as food and drink, mask requirement are also very common. There are only 23 different policies across all the counties. On the other hand, there were 59 different policies across the 50 states with may only enacted by 1 state. This is also due to inconsistency in the naming of these policies across states.
 ```{r}
-state <- county[county$policy_level == "state",]
-ggplot(state[state$start_stop=='start',], aes(fct_rev(fct_infreq(policy_type)))) + 
+state <- county[county$policy_level == "state" & county$start_stop=='start',]
+plot_state <- ggplot(state, aes(fct_rev(fct_infreq(policy_type)))) + 
   geom_bar() +
   coord_flip() +
   ggtitle("State Frequency of Policy Types") +
   xlab("Policy Types")
+plot_state
 ```
 
-Some policies, however, have almost states enacting it. For example, regulations on entertainment, food and drink, and non-essential businesses.
+Some policies, however, have almost states enacting it. For example, regulations on entertainment, food and drink, and non-essential businesses. Both of these graphs are counting how many of these policies have been "started". So that suggests that some policies may have been started and stopped many times such as restrictions on Food and Drink which makes their count higher. Even so, these graphs aim to show what are the most common tactics.
+
+On the news, we always hear about states such as New York introducing new policies and being proactive with their covid response. Even though this will not be a comprehensive analysis on states' actions, we want to view exactly how proactive states have been in starting policies.
+
+```{r}
+policy_count <- count(state, state_id)
+policy_count$state_abbr <- policy_count$state_id
+```
+
+```{r}
+lp <- list(color = toRGB("white"), width = 2)
+# specify some map projection/options
+gp <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa')
+)
+
+
+figp <- plot_geo(policy_count, locationmode = 'USA-states')
+
+fig2p <- figp %>% add_trace(
+    z = ~n, locations = ~state_abbr,
+    color = ~n, colors = 'Blues'
+  )
+
+fig2p <- fig2p %>% colorbar(title = "number of policies")
+fig2p <- fig2p %>% layout(
+    title = 'Number of Policies Each State has Started',
+    geo = gp
+  )
+
+fig2p
+fig1
+```
+
+From this graph, we see a distinct negative correlation between the number of policies enacted by the state and the positive covid cases per capita. States such as North and South Dekota have passed very little policies compared to the rest of the country. Their innaction displays itself in their incredibly high positive case per capita.
+
 
 ## Hospital
 All hospital data is from November 26, 2020.
@@ -206,7 +243,9 @@ bed_usage_tidy <- bed_usage %>%
     coord_flip() +
     ylab("proportion") + 
     xlab("State") +
+    scale_color_viridis(discrete=TRUE) +
     theme(legend.position = "bottom") +
+    scale_fill_manual(values = c("red4","steelblue", "grey38")) +
     ggtitle("Inpatient Bed Usage by State")
 ```
 
@@ -219,7 +258,6 @@ staff_short_df <- data.frame(hospital$state, staff_short_prop)
 ggplot(staff_short_df, aes(x=staff_short_prop)) + 
   geom_histogram(binwidth=0.05, center=0.025, closed='left') +
   scale_y_continuous(breaks=c(0, 2, 4, 6, 8, 10)) +
-  #scale_x_continuous(breaks=c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6)) +
   ggtitle("Number of States with x% Hospitals with Critical Staffing Shortage") +
   xlab("% of Hospitals with Critical Staffing Shortage") +
   ylab("Number of States")
