@@ -29,7 +29,7 @@ There is no missing data from the data we are working with.
 ```{r}
 hospital <- read.csv("./data/reported_hospital_utilization_20201130_2136.csv")
 inpatient_bed <- c(1, 40:51)
-inpatient_bed_df <- hospital[,inpatient_bed]
+inpatient_bed_df <- hospital[,inpatient_bed] 
 total_bed <- hospital$inpatient_beds
 covid_bed <- hospital$inpatient_beds_used_covid
 inpatient_bed_used <- hospital$inpatient_beds_used

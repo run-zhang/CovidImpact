@@ -46,8 +46,8 @@ inpatient_bed_df <- hospital[,inpatient_bed]
 total_bed <- hospital$inpatient_beds
 covid_bed <- hospital$inpatient_beds_used_covid
 not_covid_bed <- hospital$inpatient_beds_used - covid_bed
-empty_bed <- total_bed - hospital$inpatient_beds_used
-state <- as.factor(hospital$state)
+empty_bed <- total_bed - hospital$inpatient_beds_used 
+state <- as.factor(hospital$state) 
 bed_usage <- data.frame(state, covid_bed, not_covid_bed, empty_bed)
 head(bed_usage)
 ```
