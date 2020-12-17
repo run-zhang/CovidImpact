@@ -59,7 +59,7 @@ df_total_cases %>%
   ggplot(aes(x = state, y = cases/1000)) +
     geom_point(stat = "identity")+
     coord_flip() +
-    ggtitle("Total Confirmed Covid19 Cases for Each State in The U.S.")+
+    ggtitle("Total Confirmed Covid19 Cases for Each State in the US")+
     ylab("thousands of cases")+
     xlab("state")
 
@@ -160,7 +160,7 @@ fig %>% layout(title = 'Scatterplot of Covid Cases vs. Cases Per Capita in Each 
 ```
 
 
-This scatter plot is another representation of how each state is being affected by the coronavirus pandemic. From this graph, we can observe that high number of cases in the state does not directly coordinate to high cases per 100, and that some states, like North Dakota and South Dakota, with low covid case numbers actually have more percentage of people get covid infectious.
+This scatter plot is another representation of how each state is being affected by the coronavirus pandemic. Each dot represents each state and you can movie your mouse to the dot to see detailed information, like state name, cases adn cases per capita. The y axis cases per 100 represents percentage of infectious rate. Color and x axis both represent number of cases. bubble size and y axis both represent the cases per 100. From this graph, we can observe that high number of cases in the state does not directly coordinate to high infectious rate, and that some states, like North Dakota and South Dakota, with low covid case numbers actually have more percentage of people get covid infectious. 
 
 
 ### Covid19 Cases in Time Series
@@ -197,7 +197,7 @@ ggplot(us_cases1,aes(date,new_cases/1000)) +
   theme_light(16)+
   ylab("thousands of cases")+
   xlab("date")+
-  ggtitle("Daily New Covid19 Cases in the U.S.")+
+  ggtitle("Daily New Covid19 Cases in the US")+
   scale_color_identity(name = "Line",
                           breaks = c("#69b3a2", "blue"),
                           labels = c("Actual Curve", "Estimated Trend"),
@@ -381,10 +381,11 @@ tot_flights_2019 <- sum(my_data['Tot_Flights'][[1]][1:7])
 tot_flights_2020 <- sum(my_data['Tot_Flights'][[1]][13:19])
 tot_flight_data <- data.frame("year" = c("2019", "2020"), 
                               "flights" = c(tot_flights_2019, tot_flights_2020))
-ggplot(tot_flight_data, aes(x = year, y = flights)) +
+ggplot(tot_flight_data, aes(x = year, y = flights/1000000)) +
   geom_bar(stat = "identity") +
   ggtitle("Bar Graph of Total Flights in First 7 Months 2019 vs. 2020") + 
-  scale_color_viridis() 
+  scale_color_viridis() +
+  ylab("millions of flights")
 ```
 
 Therefore, using only the first 7 months of the 2019 data to compare its results more accuractely with the first 7 months of the 2020 data, we see a clear distinctment between the number of flights taken in 2019 vs. 2020, observing that the pandemic could have played a role in this distinctment. Let us see use covid case data to detect the pattern of how the number of coronavirus cases in the United States affected the number of flights taken in and out of the US. <br>
@@ -427,22 +428,22 @@ tidydf <- tidydf %>% select(month, cases, flights) %>%
 
 
 p1 <- ggplot() +
-  geom_line(data = data_2020, aes(x=fct_inorder(month), y=Tot_Flights, group=1), color="#481567FF") + 
+  geom_line(data = data_2020, aes(x=fct_inorder(month), y=Tot_Flights/1000, group=1), color="#481567FF") + 
   geom_point(size = 4) + 
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
   ggtitle("Total Flights in 2020 in the US") + 
   xlab("Month") + 
-  ylab("Total Flights") 
+  ylab("thousands of flights") 
 
 p2<- ggplot() +
-  geom_line(data = data_2020 , aes(x=fct_inorder(month), y=month_cases, group=1), color="#55C667FF") + 
+  geom_line(data = data_2020 , aes(x=fct_inorder(month), y=month_cases/1000, group=1), color="#55C667FF") + 
   geom_point(size = 4) + 
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
   ggtitle("COVID cases per Month in US") + 
   xlab("Month") + 
-  ylab("Total Cases") 
+  ylab("thousands of Total Cases") 
 
 ggarrange(p1,p2,nrow=2)
 
@@ -469,7 +470,7 @@ ggplot(data.frame(airlines, percent_changes),
   geom_bar(stat = "identity") +
   ggtitle("Bar Graph of Percent Decrease for each Airline") + 
   xlab("Airline") + 
-  ylab("Percent Decrease") + 
+  ylab("percent of decrease") + 
   scale_color_viridis()
 ```
 
@@ -567,7 +568,7 @@ p1 <- ggplot() +
   geom_hline(yintercept=0, color="orange", size=.5)+ 
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
-  ggtitle("Year-over-year Comparison of seated dinner in the U.S.")
+  ggtitle("Year-over-year Comparison of seated dinner in the US")
 ```
 
 
@@ -578,7 +579,7 @@ p2<- ggplot(data = US_case_by_date1,aes(x=date, y=daily_new/1000)) +
   geom_smooth(method ="loess", se = FALSE,span=0.2, lwd =0.8)+
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
-  ggtitle("Daily COVID Case in the U.S.")+
+  ggtitle("Daily COVID Case in the US")+
   labs(y = "Thousands of Daily New Cases")
 ggarrange(p1,p2,nrow=2)
 ```
