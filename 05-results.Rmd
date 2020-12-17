@@ -147,8 +147,7 @@ d <- diamonds[sample(nrow(diamonds), 1000), ]
 fig <- plot_ly(
   df_total_cases, x = ~cases, y = ~case_ppl*100,
   # Hover text:
-  text = ~paste("State: ", state, '$<br>cases:', cases,'$<br>cases per capita:', case_ppl),
-  color = ~cases, size = ~case_ppl
+  text = ~paste("State: ", state, '$<br>cases:', cases,'$<br>cases per capita:', case_ppl)
 )
 x <- list(
   title = "cases"
