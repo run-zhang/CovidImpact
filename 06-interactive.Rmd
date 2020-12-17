@@ -1,5 +1,9 @@
 # Interactive component
 
+Our code is 
+[here](https://github.com/run-zhang/CovidImpact/blob/main/06-interactive.Rmd).
+
+
 <script src="https://d3js.org/d3.v6.js"></script>
 
 <button onclick="change(data2019)">Travel in 2019</button>

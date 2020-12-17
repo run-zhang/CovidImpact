@@ -1,6 +1,8 @@
 # Missing values
 
-Describe any patterns you discover in missing values.
+The code of missing value analysis is 
+[here](https://github.com/run-zhang/CovidImpact/blob/main/04-missing.Rmd).
+
 ```{r}
 library(mi)
 library(janitor)
