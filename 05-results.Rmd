@@ -1,4 +1,6 @@
 # Results
+The code of our graph is [here](https://github.com/run-zhang/CovidImpact/blob/main/05-results.Rmd)
+
 
 ```{r}
 library(tidyverse)
