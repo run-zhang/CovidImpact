@@ -12,6 +12,36 @@ library(dplyr)
 ```
 
 
+## Covid Cases
+
+*Data Source*:
+https://github.com/nytimes/covid-19-data
+### Description 
+This covid cases data is collected from New York Times Official GitHub. 
+It tracks cumulative cases for each state in the United States since late January. 
+Our collected data ends on November 29th. 
+
+We chose this dataset because the New York Times compiled this time series data from state and local governments and health departments in an attempt to provide a complete record of the ongoing outbreak.
+
+
+### Basic Information about Dataset: 
+
+date(char) - year-month-day <br>
+cases (int) - cumulative cases <br>
+state(char) - each state in the U.S. <br> 
+
+```{r}
+us_case = read.csv("./data/us-states.csv")
+US_case_by_date = us_case %>%
+  mutate(date = as.Date(date))%>%
+  group_by(date) %>%
+  summarize(cumu_sum = sum(cases)) %>%
+  mutate(daily_new = cumu_sum-lag(cumu_sum)) %>%
+  drop_na()
+```
+
+
+
 
 ## Country Policy Orders
 This dataset comes in a csv format, which can be read in using "read.csv()". As described earlier, each row in this dataset is either a start or end of a policy. There is also information on both county and states. For our analysis, we will look at county and states separately. In addition, when we aggregate the number of states that enacted certain policies, we will only look at values where "start_stop" is "start" so we do not count double. Using this information we will determine how covid policies in each state had a role in how much each state got affected by the virus.  
@@ -136,18 +166,5 @@ US.nation.res = restaurant1[which(restaurant1$Type=="country" & restaurant1$Name
 
 reopen_state = reopen1[reopen1$Type == 'state',]
 reopen_state = reopen_state[reopen_state$Name %in% us_states,]
-```
-
-## US COVID Cases Data
-US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We want to see the daily new cases by subtract the cumulative data by the data of previous day for each state. With the new time series data of the daily changes in cases per state, we will use this information to make observations on how the pandemic is affecting each state and how the country is handling coronavirus as a whole. 
-
-```{r}
-us_case = read.csv("./data/us-states.csv")
-US_case_by_date = us_case %>%
-  mutate(date = as.Date(date))%>%
-  group_by(date) %>%
-  summarize(cumu_sum = sum(cases)) %>%
-  mutate(daily_new = cumu_sum-lag(cumu_sum)) %>%
-  drop_na()
 ```
 

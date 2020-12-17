@@ -15,11 +15,12 @@ airlines-data
 description-4
 basic-information-about-dataset-2
 data-transformation
+covid-cases-1
+basic-information-about-dataset-3
 country-policy-orders-1
 hospitalization-data-1
 airlines-covid-data
 restaurant-data-1
-us-covid-cases-data
 missing-values
 country-policy-orders-2
 hospitalization
@@ -27,7 +28,7 @@ airlines-covid-data-1
 restaurant-data-2
 covid-case-data
 results
-covid-cases-1
+covid-cases-2
 covid-cases-in-each-state
 covid19-cases-in-time-series
 county
