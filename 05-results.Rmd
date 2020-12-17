@@ -67,7 +67,7 @@ df_total_cases %>%
 ```
 
 
-Firstly, we generated a Cleveland graph to show total cases for each state in the U.S. and sorted it in descending order. It clearly shows that Texas and California have confirmed more than a million covid cases. Does these states with larger numbers of covid cases face a severer Covid pandemic?  
+Firstly, we generated a Cleveland graph to show total cases for each state in the U.S. and sorted it in descending order. It clearly shows that Texas and California have confirmed more than a million covid cases. Does these states with larger numbers of covid cases face a severer Covid pandemic? <br>
 
 
 
@@ -99,7 +99,7 @@ fig2
 
 ```
 
-This graph shows that the darkest states have the highest number of coronavirus cases. From this graph we can see that California, Texas, and Florida have the greatest number of cases, while the majority of central America seem to have few cases in comparison. In addition, hovering over each state will give more information on how many exact total cases are in each state.
+This graph shows that the darkest states have the highest number of coronavirus cases. From this graph we can see that California, Texas, and Florida have the greatest number of cases, while the majority of central America seem to have few cases in comparison. In addition, hovering over each state will give more information on how many exact total cases are in each state. <br> 
 
 
 
@@ -119,7 +119,7 @@ fig1 <- fig1 %>% layout(
 fig1
 ```
 
-In contrast to the first map, the second map now shows the number of positive covid cases per capita. This map can give more clear information on how each state is handling the pandemic as it takes population of each state into account. In the first map, it appeared as if California, Texas, and Florida were doing the worst with the pandemic. With this new map we can see that North Dakota is actually the state that is affected the most, as it has the most covid cases per capita, and that California and Texas pale in comparison to other states in Central America. 
+In contrast to the first map, the second map now shows the number of positive covid cases per capita. This map can give more clear information on how each state is handling the pandemic as it takes population of each state into account. In the first map, it appeared as if California, Texas, and Florida were doing the worst with the pandemic. With this new map we can see that North Dakota is actually the state that is affected the most, as it has the most covid cases per capita, and that California and Texas pale in comparison to other states in Central America. <br>
 
 
 ```{r}
@@ -182,7 +182,7 @@ ggplot(us_cases1,aes(x=date,y=total_cases/1000000)) +
   ggtitle("Cumulative Covid19 Cases in the US")
 ```
 
-This graph shows the cummulative number of covid cases starting from February of 2020 to December of 2020. As shown, it looks like the first case of the coronavirus was reported in the United States in February, and has had an exponential trend in the number of cases since then. Specifically from September to December, cases almost doubled from the first eight months.
+This graph shows the cummulative number of covid cases starting from February of 2020 to December of 2020. As shown, it looks like the first case of the coronavirus was reported in the United States in February, and has had an exponential trend in the number of cases since then. Specifically from September to December, cases almost doubled from the first eight months. <br>
 
 
 ```{r}
@@ -201,7 +201,7 @@ ggplot(us_cases1,aes(date,new_cases/1000)) +
 
 ```
 
-This graph plots time series data of the covid cases from the first case in the US in February of 2020 to December of 2020. While there have been minor dips in the daily number of cases such as in June and September, there is mostly an upwards trend, specifically a spike from November to December. 
+This graph plots time series data of the covid cases from the first case in the US in February of 2020 to December of 2020. While there have been minor dips in the daily number of cases such as in June and September, there is mostly an upwards trend, specifically a spike from November to December. <br>
 
 
 ## County
@@ -216,7 +216,7 @@ ggplot(county_policy, aes(fct_rev(fct_infreq(policy_type)))) +
   xlab("Policy Types")
 ```
 
-We see that over 400 counties have enacted Shelter in Place policies. Other regulations such as food and drink, mask requirement are also very common. There are only 23 different policies across all the counties. On the other hand, there were 59 different policies across the 50 states with may only enacted by 1 state. This is also due to inconsistency in the naming of these policies across states.
+We see that over 400 counties have enacted Shelter in Place policies. Other regulations such as food and drink, mask requirement are also very common. There are only 23 different policies across all the counties. On the other hand, there were 59 different policies across the 50 states with may only enacted by 1 state. This is also due to inconsistency in the naming of these policies across states. <br>
 
 
 ```{r}
@@ -231,7 +231,7 @@ plot_state
 
 Some policies, however, have almost states enacting it. For example, regulations on entertainment, food and drink, and non-essential businesses. Both of these graphs are counting how many of these policies have been "started". So that suggests that some policies may have been started and stopped many times such as restrictions on Food and Drink which makes their count higher. Even so, these graphs aim to show what are the most common tactics.
 
-On the news, we always hear about states such as New York introducing new policies and being proactive with their covid response. Even though this will not be a comprehensive analysis on states' actions, we want to view exactly how proactive states have been in starting policies.
+On the news, we always hear about states such as New York introducing new policies and being proactive with their covid response. Even though this will not be a comprehensive analysis on states' actions, we want to view exactly how proactive states have been in starting policies. <br>
 
 
 ```{r}
@@ -264,7 +264,7 @@ fig2p
 fig1
 ```
 
-From this graph, we see a distinct negative correlation between the number of policies enacted by the state and the positive covid cases per capita. States such as North and South Dekota have passed very little policies compared to the rest of the country. Their innaction displays itself in their incredibly high positive case per capita.
+From this graph, we see a distinct negative correlation between the number of policies enacted by the state and the positive covid cases per capita. States such as North and South Dekota have passed very little policies compared to the rest of the country. Their innaction displays itself in their incredibly high positive case per capita. <br>
 
 
 ## Hospital
@@ -316,7 +316,7 @@ bed_usage_tidy <- bed_usage %>%
     ggtitle("Inpatient Bed Usage by State")
 ```
 
-Through this chart, we see that the majority of beds occupied for all states are not covid related. States such as North and South Dakota have over 20% of their bed usage on covid-19 patients. As of November 26, there are more empty beds than beds occupied by covid patients. However, that difference is not very large in many states that may have less beds overall. To build on this intuition, we will explore the hospital's own expressions about having a critical staffing shortage.
+Through this chart, we see that the majority of beds occupied for all states are not covid related. States such as North and South Dakota have over 20% of their bed usage on covid-19 patients. As of November 26, there are more empty beds than beds occupied by covid patients. However, that difference is not very large in many states that may have less beds overall. To build on this intuition, we will explore the hospital's own expressions about having a critical staffing shortage. <br>
 
 
 ```{r}
@@ -383,7 +383,7 @@ ggplot(tot_flight_data, aes(x = year, y = flights)) +
   scale_color_viridis() 
 ```
 
-Therefore, using only the first 7 months of the 2019 data to compare its results more accuractely with the first 7 months of the 2020 data, we see a clear distinctment between the number of flights taken in 2019 vs. 2020, observing that the pandemic could have played a role in this distinctment. Let us see use covid case data to detect the pattern of how the number of coronavirus cases in the United States affected the number of flights taken in and out of the US.
+Therefore, using only the first 7 months of the 2019 data to compare its results more accuractely with the first 7 months of the 2020 data, we see a clear distinctment between the number of flights taken in 2019 vs. 2020, observing that the pandemic could have played a role in this distinctment. Let us see use covid case data to detect the pattern of how the number of coronavirus cases in the United States affected the number of flights taken in and out of the US. <br>
 
 
 ```{r}
@@ -444,7 +444,7 @@ ggarrange(p1,p2,nrow=2)
 
 ```
 
-This graph shows when the coronavirus hit the United States hard, and affected many different factors, one being the airline industry. Although there were cases in January, the number of cases quickly ramped up from March to April, which correlates with the decline in travel. From the graph, it can be seen that around May, although cases were still increasing, travel started to increase again, as people started to most likely relax on restrictions. 
+This graph shows when the coronavirus hit the United States hard, and affected many different factors, one being the airline industry. Although there were cases in January, the number of cases quickly ramped up from March to April, which correlates with the decline in travel. From the graph, it can be seen that around May, although cases were still increasing, travel started to increase again, as people started to most likely relax on restrictions. <br>
 
 
 ```{r}
@@ -477,7 +477,7 @@ was affected by the pandemic as they all have a positive percent
 change, meaning that there was a decline in the number of flights
 for each airline. The airlines that were affected the most were
 JetBlue, Hawaiian, and United. These airlines had at least a 60%
-decline in flights when the pandemic started.
+decline in flights when the pandemic started. <br>
 
 
 ```{r}
@@ -553,7 +553,7 @@ ggplot(restaurant_state, aes(x = Date, y = Name, fill = Percentage)) +
   scale_fill_viridis()
 ```
 
-The heatmap above shows the number of seated diners by state from February until December 2020. We can see a clear drop in seated dinners across all states since mid-March. Hawaii's restaurant industry was hit hardest and just had a slight recovery after November. District of Columbia also has a visibly severe impact on sitted dinner than other states. People in New York, New Jersey and Washinton seem to go for sitted dinner later. On the contrary,Alabama, Arizona, Florida, Oklahoma and Texas start eating out earlier. 
+The heatmap above shows the number of seated diners by state from February until December 2020. We can see a clear drop in seated dinners across all states since mid-March. Hawaii's restaurant industry was hit hardest and just had a slight recovery after November. District of Columbia also has a visibly severe impact on sitted dinner than other states. People in New York, New Jersey and Washinton seem to go for sitted dinner later. On the contrary,Alabama, Arizona, Florida, Oklahoma and Texas start eating out earlier. <br>
 
 
 ```{r}
