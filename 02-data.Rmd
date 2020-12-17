@@ -58,6 +58,7 @@ total_phases (integer): As some states shifted to reopening policies, this colum
 
 ## Hospitalization Data
 *Data Source*: 
+
 https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state \ 
 
 https://healthdata.gov/dataset/covid-19-reported-patient-impact-and-hospital-capacity-state
