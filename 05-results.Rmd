@@ -159,7 +159,7 @@ fig %>% layout(title = 'Scatterplot of Covid Cases vs. Cases Per Capita in Each 
 ```
 
 
-This scatter plot is another representation of how each state is being affected by the coronavirus pandemic. Each dot represents each state and you can movie your mouse to the dot to see detailed information, like state name, cases adn cases per capita. The y axis cases per 100 represents percentage of infectious rate. Color and x axis both represent number of cases. bubble size and y axis both represent the cases per 100. From this graph, we can observe that high number of cases in the state does not directly coordinate to high infectious rate, and that some states, like North Dakota and South Dakota, with low covid case numbers actually have more percentage of people get covid infectious. 
+This scatter plot is another representation of how each state is being affected by the coronavirus pandemic. Each dot represents each state and you can movie your mouse to the dot to see detailed information, like state name, cases adn cases per capita. The y-axis cases per 100 represents percentage of infectious rate and the x-axis represents number of cases. From this graph, we can observe that high number of cases in the state does not directly coordinate to high infectious rate, and that some states, like North Dakota and South Dakota, with low covid case numbers actually have more percentage of people get covid infectious. 
 
 
 ### Covid19 Cases in Time Series
