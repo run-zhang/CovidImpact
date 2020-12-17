@@ -9,7 +9,9 @@ library(dplyr)
 library(stringr)
 library(ggplot2)
 ```
+## Covid Cases
 
+There are no missing values in this dataset. 
 
 ## Country Policy Orders
 ```{r}
@@ -137,7 +139,5 @@ ggplot(reopen_na2)+
   ggtitle("Missing Value count plot")
 ```
 
-## Covid Case Data
 
-There are no missing values in this dataset. 
 
