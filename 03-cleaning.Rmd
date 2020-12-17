@@ -17,13 +17,19 @@ library(dplyr)
 *Data Source*:
 https://github.com/nytimes/covid-19-data
 
+https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-total.html
 
-### Description 
+
+### Description for Covid Cases
 This covid cases data is collected from New York Times Official GitHub. 
 It tracks cumulative cases for each state in the United States since late January. 
 Our collected data ends on November 29th. 
 
 We chose this dataset because the New York Times compiled this time series data from state and local governments and health departments in an attempt to provide a complete record of the ongoing outbreak.
+
+### Description for Covid Cases per Capita
+This is 2019 US population estimation for each state from U.S. Census Bureau. 
+We use this population and covid cases to produce a covid per capita for each state.
 
 
 ### Basic Information about Dataset: 
@@ -42,12 +48,6 @@ US_case_by_date = us_case %>%
   drop_na()
 ```
 
-*Data Source*:
-https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-total.html
-
-### Description 
-This is 2019 US population estimation for each state from U.S. Census Bureau. 
-We use this population and covid cases to produce a covid per capita for each state.
 
 ```{r}
 #data process
