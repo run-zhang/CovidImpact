@@ -22,6 +22,7 @@ sort(colSums(is.na(county)), decreasing = TRUE)
 x <- missing_data.frame(county)
 image(x)
 ```
+
 There are a few missing values county, zip_code (fips_cod), and total phases. The missing county and zip code values are because if the policy is state wide, there is no entry in zip code or county. Hence there is no zip code and country details. In addition, most instances do not have total phases so there are many missing values there. Based on these observations, we will look at policy order dataset in both the county and state point of view.
 
 ## Hospitalization
@@ -100,6 +101,7 @@ us_states = c('Alabama','Arizona','California','Colorado', 'Connecticut',
        'Texas', 'Utah', 'Virginia', 'Washington', 'Wisconsin')
 ```
 
+
 ```{r}
 restaurant = read.csv("./data/YoY_Seated_Diner_Data-2.csv")
 restaurant1 = restaurant %>% pivot_longer(cols = starts_with("X"),
@@ -134,4 +136,8 @@ ggplot(reopen_na2)+
   geom_col(aes(x = Name,y = count_na))+
   ggtitle("Missing Value count plot")
 ```
+
+## Covid Case Data
+
+There are no missing values in this dataset. 
 
