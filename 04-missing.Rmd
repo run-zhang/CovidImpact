@@ -25,7 +25,19 @@ image(x)
 There are a few missing values county, zip_code (fips_cod), and total phases. The missing county and zip code values are because if the policy is state wide, there is no entry in zip code or county. Hence there is no zip code and country details. In addition, most instances do not have total phases so there are many missing values there. Based on these observations, we will look at policy order dataset in both the county and state point of view.
 
 ## Hospitalization
-There are some 0 values that may be missing values in our dataset.
+There is no missing data from the data we are working with.
+```{r}
+hospital <- read.csv("./data/reported_hospital_utilization_20201130_2136.csv")
+inpatient_bed <- c(1, 40:51)
+inpatient_bed_df <- hospital[,inpatient_bed] 
+total_bed <- hospital$inpatient_beds
+covid_bed <- hospital$inpatient_beds_used_covid
+inpatient_bed_used <- hospital$inpatient_beds_used
+state <- as.factor(hospital$state)
+bed_usage <- data.frame(state, covid_bed, total_bed, inpatient_bed_used)
+x <- missing_data.frame(bed_usage)
+image(x)
+```
 
 ## Airlines Covid Data
 There are no values missing in our dataset. The only "missing values" we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary.
