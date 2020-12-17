@@ -95,7 +95,7 @@ adult_icu_bed_covid_utilization: Percentage of total staffed adult ICU beds curr
 
 reporting_cutoff_start: Look back date start - The latest reports from each hospital is summed for this report starting with this date.
 
-*Issues with data*: According to the data source no statistical analysis is applied to account for non-response and/or to account for missing data. Otherwise, we do not see major issues.
+*Issues with data*: According to the data source no statistical analysis is applied to account for non-response and/or to account for missing data. We realized duirng our analysis that we would benefit much more from having a generalized hospitalization data that includes time series. This data is for up to a select date so it is useful for analyzing detailed hospital response but not for an overview.
  
  
 ## Restaurant data 
