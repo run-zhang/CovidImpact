@@ -5,9 +5,9 @@
 <button onclick="change(data2019)">Travel in 2019</button>
 <button onclick="change(data2020)">Travel in 2020</button>
 
-<h3>Total Flights in a Given Year</h3>
+<h3>Domestic Total Monthly Flights in 2019/2020</h3>
 
-<paragraph>Click on a button to see the pattern of the total number of flights taken in a given year. What pattern do you notice between the years of 2019 and 2020?</paragraph>
+<paragraph>Click on a button to see the pattern of the total domestic monthly flights taken in a given year. Default is 2019. What pattern do you notice between the years of 2019 and 2020?</paragraph>
 
 <div id="plot"></div>
 
