@@ -172,6 +172,10 @@ us_cases1 <- df_case  %>%
   mutate(new_cases = (c(1,diff(total_cases))))
 ```
 
+
+
+
+
 ```{r}
 ggplot(us_cases1,aes(x=date,y=total_cases/1000000)) +
   geom_line(color="#69b3a2") + 
@@ -563,7 +567,7 @@ p1 <- ggplot() +
   geom_hline(yintercept=0, color="orange", size=.5)+ 
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
-  ggtitle("Year-over-year Comparison of seated dinner in the US")
+  ggtitle("Year-over-year Comparison of seated dinner in the U.S.")
 ```
 
 
@@ -574,7 +578,7 @@ p2<- ggplot(data = US_case_by_date1,aes(x=date, y=daily_new/1000)) +
   geom_smooth(method ="loess", se = FALSE,span=0.2, lwd =0.8)+
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   theme_light()+
-  ggtitle("Daily COVID case in US")+
+  ggtitle("Daily COVID Case in the U.S.")+
   labs(y = "Thousands of Daily New Cases")
 ggarrange(p1,p2,nrow=2)
 ```
