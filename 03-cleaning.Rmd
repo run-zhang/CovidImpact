@@ -11,19 +11,6 @@ library(tidyr)
 library(dplyr)
 ```
 
-## US COVID Cases Data
-US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We transformed it to daily new cases per day for each state. For total us cases, we sumed up all states cases to get total cumulative cases and daily new cases per day. 
-```{r}
-us_case = read.csv("./data/us-states.csv")
-US_case_by_date = us_case %>%
-  mutate(date = as.Date(date))%>%
-  group_by(date) %>%
-  summarize(cumu_sum = sum(cases)) %>%
-  mutate(daily_new = cumu_sum-lag(cumu_sum)) %>%
-  drop_na()
-summary(US_case_by_date)
-```
-
 
 
 ## Country Policy Orders
@@ -73,6 +60,7 @@ staff_short_prop <- hospital$critical_staffing_shortage_today_yes / (hospital$cr
 staff_short_df <- data.frame(hospital$state, staff_short_prop)
 head(staff_short_df)
 ```
+
 
 
 ## Airlines Covid Data
@@ -149,4 +137,15 @@ reopen_state = reopen1[reopen1$Type == 'state',]
 reopen_state = reopen_state[reopen_state$Name %in% us_states,]
 ```
 
+## US COVID Cases Data
+US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We want to see the daily new cases by substract the cumulative data by the data of previous day.
+```{r}
+us_case = read.csv("./data/us-states.csv")
+US_case_by_date = us_case %>%
+  mutate(date = as.Date(date))%>%
+  group_by(date) %>%
+  summarize(cumu_sum = sum(cases)) %>%
+  mutate(daily_new = cumu_sum-lag(cumu_sum)) %>%
+  drop_na()
+```
 
