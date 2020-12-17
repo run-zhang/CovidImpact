@@ -14,11 +14,11 @@ airlines-data
 description-4
 basic-information-about-dataset-1
 data-transformation
+us-covid-cases-data
 country-policy-orders-1
 hospitalization-data-1
 airlines-covid-data
 restaurant-data-1
-us-covid-cases-data
 missing-values
 country-policy-orders-2
 hospitalization

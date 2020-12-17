@@ -11,7 +11,12 @@ This covid cases data is collected from New York Times Official GitHub. It track
 
 We chose this dataset because the New York Times compiled this time series data from state and local governments and health departments in an attempt to provide a complete record of the ongoing outbreak.
 
-
+### Basic Information about Dataset: 
+ 
+date(char) - year-month-day <br>
+cases (int) - cumulative cases <br>
+state(char) - each state in the U.S. <br> 
+ 
 
 
 ## Country Policy Orders

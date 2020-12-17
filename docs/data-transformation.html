@@ -99,11 +99,11 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#country-policy-orders-1"><i class="fa fa-check"></i><b>3.1</b> Country Policy Orders</a></li>
-<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#hospitalization-data-1"><i class="fa fa-check"></i><b>3.2</b> Hospitalization Data</a></li>
-<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#airlines-covid-data"><i class="fa fa-check"></i><b>3.3</b> Airlines Covid Data</a></li>
-<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#restaurant-data-1"><i class="fa fa-check"></i><b>3.4</b> Restaurant data</a></li>
-<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#us-covid-cases-data"><i class="fa fa-check"></i><b>3.5</b> US COVID Cases Data</a></li>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#us-covid-cases-data"><i class="fa fa-check"></i><b>3.1</b> US COVID Cases Data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#country-policy-orders-1"><i class="fa fa-check"></i><b>3.2</b> Country Policy Orders</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#hospitalization-data-1"><i class="fa fa-check"></i><b>3.3</b> Hospitalization Data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#airlines-covid-data"><i class="fa fa-check"></i><b>3.4</b> Airlines Covid Data</a></li>
+<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#restaurant-data-1"><i class="fa fa-check"></i><b>3.5</b> Restaurant data</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
 <li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#country-policy-orders-2"><i class="fa fa-check"></i><b>4.1</b> Country Policy Orders</a></li>
@@ -146,8 +146,19 @@
 <h1><span class="header-section-number">Chapter 3</span> Data transformation</h1>
 <p>Describe the process of getting the data into a form in which you could work with it in R. If your code does not lend itself to being including in the .Rmd file, provide a link to the folder or file(s) that contain(s) that code.
 Write a draft of the <a href="https://edav.info/project#report-format">Data Transformation chapter</a></p>
+<div id="us-covid-cases-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> US COVID Cases Data</h2>
+<p>US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We transformed it to daily new cases per day for each state. For total us cases, we sumed up all states cases to get total cumulative cases and daily new cases per day.</p>
+<pre><code>##       date               cumu_sum          daily_new     
+##  Min.   :2020-01-22   Min.   :       1   Min.   :     0  
+##  1st Qu.:2020-04-09   1st Qu.:  474281   1st Qu.: 20167  
+##  Median :2020-06-26   Median : 2504778   Median : 34189  
+##  Mean   :2020-06-26   Mean   : 3825842   Mean   : 43360  
+##  3rd Qu.:2020-09-12   3rd Qu.: 6529877   3rd Qu.: 55168  
+##  Max.   :2020-11-30   Max.   :13615103   Max.   :205460</code></pre>
+</div>
 <div id="country-policy-orders-1" class="section level2">
-<h2><span class="header-section-number">3.1</span> Country Policy Orders</h2>
+<h2><span class="header-section-number">3.2</span> Country Policy Orders</h2>
 <p>This dataset comes in a csv format, which can be read in using “read.csv()”. As described earlier, each row in this dataset is either a start or end of a policy. There is also information on both county and states. For our analysis, we will look at county and states separately. In addition, when we aggregate the number of states that enacted certain policies, we will only look at values where “start_stop” is “start” so we do not count double.</p>
 <p>County Policies:</p>
 <p>State:</p>
@@ -189,7 +200,7 @@ Write a draft of the <a href="https://edav.info/project#report-format">Data Tran
 ## 6       CO 33</code></pre>
 </div>
 <div id="hospitalization-data-1" class="section level2">
-<h2><span class="header-section-number">3.2</span> Hospitalization Data</h2>
+<h2><span class="header-section-number">3.3</span> Hospitalization Data</h2>
 <p>This dataset comes in a csv format, which can be read in using “read.csv()”. As seen in the dataset description, there are many different columns with a variety of different values. We are only concentrating on a few of these values in our analysis so we split the dataframe up. We will analyze inpatient bed use which is column index 40 to 51.</p>
 <pre><code>##    state inpatient_beds_utilization inpatient_beds_utilization_coverage inpatient_beds_utilization_numerator inpatient_beds_utilization_denominator
 ## 1     PR                  0.5210526                                  68                                 4554                                   8740
@@ -379,7 +390,7 @@ Write a draft of the <a href="https://edav.info/project#report-format">Data Tran
 <p>We then calculate the proportion by diving those that reported “critical staffing shortage today yes” over the sum of both yes and no.</p>
 </div>
 <div id="airlines-covid-data" class="section level2">
-<h2><span class="header-section-number">3.3</span> Airlines Covid Data</h2>
+<h2><span class="header-section-number">3.4</span> Airlines Covid Data</h2>
 <p>This dataset comes in a xlsx format, therefore we installed the “readxl” package, and read in the data using the commands from that package. Since there are some extra spaces in the excel sheet, we remade the table into a form that had no blank spaces, and thus easily callable by column name, which is a dataframe in R. Combining all the columns together into a dataframe, we then renamed the columns such that it would be representative of the information in the column. Lastly, since all the data was in character format, we converted all the columns that had numeric data to a numeric form, such that it can be easily used to create graphs and other visual structures to aid us in our exploratory analysis. Our final product of the downloaded data was a dataframe in R, which had columns that were clearly represented by their names, no missing slots or data, and all the data was the right type of class to work with. The top 5 rows of how the dataframe is structured can be seen below. This will be used for different types of analyses on the impact of covid on the airline/travel industry.</p>
 <pre><code>##   year    month Tot_Flights Alaska Allegiant American  Delta Frontier Hawaiian JetBlue Southwest Spirit United
 ## 1 2019  January      619099  34663      6713   162931 134243     9496     7514   23463    107363  15023 117690
@@ -390,13 +401,9 @@ Write a draft of the <a href="https://edav.info/project#report-format">Data Tran
 ## 6 2019     June      679802  37953     11037   173440 153427    11337     7896   24204    112879  17553 130076</code></pre>
 </div>
 <div id="restaurant-data-1" class="section level2">
-<h2><span class="header-section-number">3.4</span> Restaurant data</h2>
+<h2><span class="header-section-number">3.5</span> Restaurant data</h2>
 <p>Two datasets come in a csv format, which can be read in using R commands. Each row contains information of a country or a state and each columns represent different dates. To clean this data we want to change the date columns to one column.</p>
 <p>The original YoY_Seated_Diner_Data-2.csv file contains information about 8 country of 60 state and 60 cities, and the reopen dataset contains 8 countries and 9 states, including 8 US states. Here we only extract US state and nationwide information.</p>
-</div>
-<div id="us-covid-cases-data" class="section level2">
-<h2><span class="header-section-number">3.5</span> US COVID Cases Data</h2>
-<p>US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We want to see the daily new cases by substract the cumulative data by the data of previous day.</p>
 
 </div>
 </div>

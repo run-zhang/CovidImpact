@@ -99,11 +99,11 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#country-policy-orders-1"><i class="fa fa-check"></i><b>3.1</b> Country Policy Orders</a></li>
-<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#hospitalization-data-1"><i class="fa fa-check"></i><b>3.2</b> Hospitalization Data</a></li>
-<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#airlines-covid-data"><i class="fa fa-check"></i><b>3.3</b> Airlines Covid Data</a></li>
-<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#restaurant-data-1"><i class="fa fa-check"></i><b>3.4</b> Restaurant data</a></li>
-<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#us-covid-cases-data"><i class="fa fa-check"></i><b>3.5</b> US COVID Cases Data</a></li>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#us-covid-cases-data"><i class="fa fa-check"></i><b>3.1</b> US COVID Cases Data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#country-policy-orders-1"><i class="fa fa-check"></i><b>3.2</b> Country Policy Orders</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#hospitalization-data-1"><i class="fa fa-check"></i><b>3.3</b> Hospitalization Data</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#airlines-covid-data"><i class="fa fa-check"></i><b>3.4</b> Airlines Covid Data</a></li>
+<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#restaurant-data-1"><i class="fa fa-check"></i><b>3.5</b> Restaurant data</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a><ul>
 <li class="chapter" data-level="4.1" data-path="missing-values.html"><a href="missing-values.html#country-policy-orders-2"><i class="fa fa-check"></i><b>4.1</b> Country Policy Orders</a></li>
@@ -149,7 +149,7 @@
 <h2><span class="header-section-number">4.1</span> Country Policy Orders</h2>
 <pre><code>## total_phases    fips_code     state_id       county policy_level         date  policy_type   start_stop     comments       source 
 ##         2858         1659            0            0            0            0            0            0            0            0</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 There are a few missing values county, zip_code (fips_cod), and total phases. The missing county and zip code values are because if the policy is state wide, there is no entry in zip code or county. Hence there is no zip code and country details. In addition, most instances do not have total phases so there are many missing values there. Based on these observations, we will look at policy order dataset in both the county and state point of view.</p>
 </div>
 <div id="hospitalization" class="section level2">
@@ -159,7 +159,7 @@ There are a few missing values county, zip_code (fips_cod), and total phases. Th
 <div id="airlines-covid-data-1" class="section level2">
 <h2><span class="header-section-number">4.3</span> Airlines Covid Data</h2>
 <p>There are no values missing in our dataset. The only “missing values” we had were those in the year column. The way the data was initially presented in the table, one year was written in the year column on the first row for the whole year, meaning for the next 12 rows, representing a month per row. In order to make our data more understandable and usable, such that we would not have to hard code any data, we added values to the year column, instead of leaving it blank, such that we would have a full dataset to work with. For example, instead of having only 2019 in the first row under the year column, we added 2019 to the rest of the rows until December in the year column, such that we would have a full dataset, making it easier to classify and facet data if necessary.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>As seen from this missing data dataframe, there is no dark squares representing no missing data for this dataset.</p>
 </div>
 <div id="restaurant-data-2" class="section level2">
@@ -179,8 +179,8 @@ From the number of NA, we can already know Texas, Florida reopen early for in-do
 ##  [8,] &quot;New York&quot;      &quot;Pennsylvania&quot;
 ##  [9,] &quot;New York&quot;      &quot;Texas&quot;       
 ## [10,] &quot;Pennsylvania&quot;  &quot;Texas&quot;</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-20-1.png" width="672" />
-<img src="finalproj_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="finalproj_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 
 </div>
 </div>
