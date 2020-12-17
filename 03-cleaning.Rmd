@@ -1,6 +1,7 @@
 # Data transformation
 
-The code of our data transformation is here.
+The code of our data transformation is [here](https://github.com/run-zhang/CovidImpact/blob/main/03-cleaning.Rmd)
+.
 
 ```{r}
 library(tidyverse)
