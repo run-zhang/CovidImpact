@@ -14,7 +14,7 @@ library(dplyr)
 
 
 ## Country Policy Orders
-This dataset comes in a csv format, which can be read in using "read.csv()". As described earlier, each row in this dataset is either a start or end of a policy. There is also information on both county and states. For our analysis, we will look at county and states separately. In addition, when we aggregate the number of states that enacted certain policies, we will only look at values where "start_stop" is "start" so we do not count double.
+This dataset comes in a csv format, which can be read in using "read.csv()". As described earlier, each row in this dataset is either a start or end of a policy. There is also information on both county and states. For our analysis, we will look at county and states separately. In addition, when we aggregate the number of states that enacted certain policies, we will only look at values where "start_stop" is "start" so we do not count double. Using this information we will determine how covid policies in each state had a role in how much each state got affected by the virus.  
 
 County Policies:
 ```{r}
@@ -38,7 +38,8 @@ head(policy_count)
 ```
 
 ## Hospitalization Data
-This dataset comes in a csv format, which can be read in using "read.csv()". As seen in the dataset description, there are many different columns with a variety of different values. We are only concentrating on a few of these values in our analysis so we split the dataframe up. We will analyze inpatient bed use which is column index 40 to 51. We then calculate the proportion of beds used by covid patients, non-covid patients, and empty beds. To do this, we extract total bed "inpatient bed", covid bed "inpatient_beds_used_covid", non-covid bed "inpatient_beds_used - covid_bed", and empty bed "total bed - inpatient_beds_used".
+This dataset comes in a csv format, which can be read in using "read.csv()". As seen in the dataset description, there are many different columns with a variety of different values. We are only concentrating on a few of these values in our analysis so we split the dataframe up. We will analyze inpatient bed use which is column index 40 to 51. We then calculate the proportion of beds used by covid patients, non-covid patients, and empty beds. To do this, we extract total bed "inpatient bed", covid bed "inpatient_beds_used_covid", non-covid bed "inpatient_beds_used - covid_bed", and empty bed "total bed - inpatient_beds_used". This information will be used to analyze how hospitalization has increased, and how much coronavirus has taken over hospital beds. 
+
 ```{r}
 hospital <- read.csv("./data/reported_hospital_utilization_20201130_2136.csv")
 inpatient_bed <- c(1, 40:51)
@@ -117,7 +118,7 @@ reopen1 = reopen %>% pivot_longer(cols = starts_with("X"),
                mutate(Date = paste0("2020.",str_remove(Date,"X")))%>%
                mutate(Date = as.Date(chartr(old = ".", new = "-", Date)))
 ```
-The original YoY_Seated_Diner_Data-2.csv file contains information about 8 country of 60 state and 60 cities, and the reopen dataset contains 8 countries and 9 states, including 8 US states. Here we only extract US state and nationwide information.
+The original YoY_Seated_Diner_Data-2.csv file contains information about 8 country of 60 state and 60 cities, and the reopen dataset contains 8 countries and 9 states, including 8 US states. Here we only extract US state and nationwide information from the dataset. We will be using these two datasets in order to see trends within the restaurant industry, and how the pandemic affected the closing and reopening of restaurants in each state. 
 
 ```{r}
 us_states = c('Alabama','Arizona','California','Colorado', 'Connecticut',
@@ -138,7 +139,8 @@ reopen_state = reopen_state[reopen_state$Name %in% us_states,]
 ```
 
 ## US COVID Cases Data
-US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We want to see the daily new cases by substract the cumulative data by the data of previous day.
+US-state data is in csv format and we can read it directly into R. It contains cumulative COVID case numbers by states of each day. We want to see the daily new cases by subtract the cumulative data by the data of previous day for each state. With the new time series data of the daily changes in cases per state, we will use this information to make observations on how the pandemic is affecting each state and how the country is handling coronavirus as a whole. 
+
 ```{r}
 us_case = read.csv("./data/us-states.csv")
 US_case_by_date = us_case %>%
