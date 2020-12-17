@@ -33,12 +33,14 @@ County Policies:
 ```{r}
 county <- read.csv("./data/state_policy_updates_20201202_0721.csv")
 county_policy <- county[county$policy_level=='county' & county$start_stop=='start',]
+head(subset(county_policy, select=-c(8, 9)))
+
 ```
 
 State:
 ```{r}
 state_policy <- county[county$policy_level == "state" & county$start_stop=='start',]
-head(state_policy)
+head(subset(state_policy, select=-c(8, 9)))
 ```
 
 Finally, we created this table by counting all the times each state appears in the previous dataframe to see how many policies each state enacted. This information is fed into our map visualization.
@@ -49,23 +51,28 @@ head(policy_count)
 ```
 
 ## Hospitalization Data
-This dataset comes in a csv format, which can be read in using "read.csv()". As seen in the dataset description, there are many different columns with a variety of different values. We are only concentrating on a few of these values in our analysis so we split the dataframe up. We will analyze inpatient bed use which is column index 40 to 51.
+This dataset comes in a csv format, which can be read in using "read.csv()". As seen in the dataset description, there are many different columns with a variety of different values. We are only concentrating on a few of these values in our analysis so we split the dataframe up. We will analyze inpatient bed use which is column index 40 to 51. We then calculate the proportion of beds used by covid patients, non-covid patients, and empty beds. To do this, we extract total bed "inpatient bed", covid bed "inpatient_beds_used_covid", non-covid bed "inpatient_beds_used - covid_bed", and empty bed "total bed - inpatient_beds_used".
 ```{r}
 hospital <- read.csv("./data/reported_hospital_utilization_20201130_2136.csv")
 inpatient_bed <- c(1, 40:51)
 inpatient_bed_df <- hospital[,inpatient_bed]
-inpatient_bed_df
+total_bed <- hospital$inpatient_beds
+covid_bed <- hospital$inpatient_beds_used_covid
+not_covid_bed <- hospital$inpatient_beds_used - covid_bed
+empty_bed <- total_bed - hospital$inpatient_beds_used 
+state <- as.factor(hospital$state) 
+bed_usage <- data.frame(state, covid_bed, not_covid_bed, empty_bed)
+head(bed_usage)
 ```
-We then calculate the proportion of beds used by covid patients, non-covid patients, and empty beds. To do this, we extract total bed "inpatient bed", covid bed "inpatient_beds_used_covid", non-covid bed "inpatient_beds_used - covid_bed", and empty bed "total bed - inpatient_beds_used". 
 
-We also analyze staffing shortages in a similar fashion. Staff information is columns 1-7.
+We also analyze staffing shortages in a similar fashion. Staff information is columns 1-7. We then calculate the proportion by diving those that reported "critical staffing shortage today yes" over the sum of both yes and no.
 ```{r}
 staff_shortage <- c(1:7)
 staff_shortage_df <- hospital[,staff_shortage]
-head(staff_shortage_df)
+staff_short_prop <- hospital$critical_staffing_shortage_today_yes / (hospital$critical_staffing_shortage_today_yes+hospital$critical_staffing_shortage_today_no)
+staff_short_df <- data.frame(hospital$state, staff_short_prop)
+head(staff_short_df)
 ```
-
-We then calculate the proportion by diving those that reported "critical staffing shortage today yes" over the sum of both yes and no.
 
 
 ## Airlines Covid Data
