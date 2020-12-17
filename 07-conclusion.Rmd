@@ -1,5 +1,7 @@
 # Conclusion
 
+There are hundreds covid cases analysis online. Most of them mainly focus on the total covid cases for each state. However, Going through the analysis of covid cases in each state in the U.S., we found that the states with the large number of covid cases does not imply they have a high percentage infectious rate. When comparing Covid impact in each state, we should consider covid cases per capita also. <br>
+
 County Policy Orders was a very interesting dataset to work with. Limitations included our ability to congregate data if they were worded differently. For example, many of the policies may have fallen in the same category, but were seperated into different ones instead. In the future, we would like to incorporate the start and stop times of each policy instead of just the start time. This can give us more idea about how states are responding at different times of the pandemic. In addition, the Comment section may also be interesting to analyze. <br>
 
 The Hospitalization dataset had a lot of information but was very limiting because it only showed information for a given day and did not store any previous day information after each website update. Even so, it was very helpful in analyzing the situation across different states. Future directions would include looking for more data to make a generalized time series to match up hospital capacity with covid cases. <br>
