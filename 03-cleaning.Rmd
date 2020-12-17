@@ -16,6 +16,8 @@ library(dplyr)
 
 *Data Source*:
 https://github.com/nytimes/covid-19-data
+
+
 ### Description 
 This covid cases data is collected from New York Times Official GitHub. 
 It tracks cumulative cases for each state in the United States since late January. 
@@ -40,6 +42,41 @@ US_case_by_date = us_case %>%
   drop_na()
 ```
 
+*Data Source*:
+https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-total.html
+
+### Description 
+This is 2019 US population estimation for each state from U.S. Census Bureau. 
+We use this population and covid cases to produce a covid per capita for each state.
+
+```{r}
+#data process
+# prepare population per states data
+df_ppl <- read_excel("./data/nst-est2019-01.xlsx", range = c("A10:M60"),
+                      col_names = c("geographic_area", "ppl2000","ppl2000est","0","1","2","3","4","5","6","7","8","ppl2019")) %>% 
+  mutate(state = substring(geographic_area,2)) %>% 
+  select("state","ppl2019")
+
+# prepare covid cases df
+df_case = read.csv("./data/us-states.csv") 
+
+
+df_total_cases <-  df_case %>% 
+  filter(date == "2020-11-29") 
+df_total_cases <-  df_total_cases %>% 
+  merge(x = df_total_cases , y=USAboundaries :: state_codes, by.x="state", by.y = "state_name")
+df_total_cases <-  df_total_cases %>% 
+  merge(x = df_total_cases , y=df_ppl, by.x="state", by.y = "state") %>% 
+  mutate(case_ppl = cases/ppl2019) %>% 
+  mutate(case_ppl_log = log(cases/ppl2019)) %>%
+  mutate(case_log = log(cases))
+
+df_total_cases$case_ppl <-  round(df_total_cases$case_ppl, 3)
+
+df_total_cases$hover <- with(df_total_cases, paste(state, '<br>', "Covid cases",cases,"<br>",
+                                                   "Covid cases per capita",case_ppl))
+                   
+```   
 
 
 
